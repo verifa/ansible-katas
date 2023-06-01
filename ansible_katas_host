@@ -1,0 +1,6 @@
+FROM ubuntu:latest
+
+RUN apt update
+RUN apt-get install openssh-client openssh-server -y
+
+ENTRYPOINT service ssh start && sleep infinity

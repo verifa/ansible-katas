@@ -1,0 +1,17 @@
+version: '3'
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: ansible_katas_workspace
+    container_name: ansible_katas_workspace
+    working_dir: /workspace
+    volumes:
+      - ./workspace:/workspace
+  host-1:
+    build:
+      context: .
+      dockerfile: ansible_katas_host
+    container_name: ansible_katas_host_1
+    ports:
+      - "22:22"
