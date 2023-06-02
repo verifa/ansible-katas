@@ -1,0 +1,15 @@
+---
+- name: install cowsay
+  hosts: all
+  become: yes
+  tasks:
+    - name: Execute the script
+      shell: |
+        apt-get update -y
+        apt-get install -y cowsay
+    # Below will be made by student
+    - name: Say something
+      shell: |
+        /usr/games/cowsay hewwo
+      register: out
+    - debug: var=out.stdout_lines

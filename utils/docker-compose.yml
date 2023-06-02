@@ -7,7 +7,7 @@ services:
     container_name: ansible_katas_workspace
     working_dir: /workspace
     volumes:
-      - ./workspace:/workspace
+      - ${EXERCISE_PATH}/workspace:/workspace
   host-1:
     build:
       context: .
