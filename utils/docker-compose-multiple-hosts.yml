@@ -13,3 +13,12 @@ services:
       context: .
       dockerfile: ansible_katas_host
     container_name: ansible_katas_host_1
+    environment:
+      - NAME=ansible_katas_host_1
+  host-2:
+    build:
+      context: .
+      dockerfile: ansible_katas_host
+    container_name: ansible_katas_host_2
+    environment:
+      - NAME=ansible_katas_host_2

@@ -1,0 +1,5 @@
+here we talk about having to create a debug task to check if our install was successsful, and we didnt even know if cowsay was already installed. lets use a built in plugin to utilise its features for maknig sure cowsay isnt already installed, and check that the installataion was succesful so that the playbook knows if it should call it success or not.
+
+Discuss differences and tradeoffs between exercise 1 and 2 (scripting vs builtins)
+
+try running it again and see that the output is now "ok" instead of "changed"

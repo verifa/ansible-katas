@@ -1,0 +1,15 @@
+---
+- name: install cowsay
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install cowsay
+      ansible.builtin.apt:
+        name: cowsay
+        state: present
+        update_cache: yes
+    - name: Say something
+      shell: |
+        /usr/games/cowsay "I just ran on {{ NAME }}"
+      register: out
+    - debug: var=out.stdout_lines

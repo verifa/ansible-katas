@@ -1,0 +1,11 @@
+[group_1]
+192.168.16.3
+
+[group_1:vars]
+NAME=group_1
+
+[group_2]
+192.168.16.4
+
+[group_2:vars]
+NAME=group_2

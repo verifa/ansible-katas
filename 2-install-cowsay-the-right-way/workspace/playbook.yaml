@@ -1,0 +1,11 @@
+---
+- name: install cowsay
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install cowsay
+      ansible.builtin.apt:
+        name: cowsay
+        state: present
+        update_cache: yes
+    
