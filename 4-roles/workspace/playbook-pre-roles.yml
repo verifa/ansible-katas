@@ -1,0 +1,17 @@
+---
+- name: Add the user {{ username }}
+   ansible.builtin.user:
+     name: "{{ username }}"
+     state: present
+     uid: 999999
+     generate_ssh_key: yes
+   become: yes
+ 
+    - name: "Install Nginx"
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+
+          - name: "Configure .bashrc"
+            shell: |
+              echo asd   

@@ -1,0 +1,13 @@
+---
+- name: install docker and run nginx
+  hosts: all
+  become: true
+  roles:
+  - docker
+  - run-nginx
+
+- name: install node-exporter
+  hosts: all
+  become: true
+  roles:
+  - node-exporter
