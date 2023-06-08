@@ -1,13 +1,21 @@
 ---
-- name: install docker and run nginx
-  hosts: all
-  become: true
-  roles:
-  - docker
-  - run-nginx
 
-- name: install node-exporter
+handlers:
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: install nginx
   hosts: all
   become: true
   roles:
-  - node-exporter
+  - install-nginx
+
+- name: Configure nginx
+  hosts: all
+  become: true
+  roles:
+  - cowsay-nginx-configuration
+  notify: restart nginx
+

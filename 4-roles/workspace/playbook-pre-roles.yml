@@ -1,17 +1,37 @@
 ---
-- name: Add the user {{ username }}
-   ansible.builtin.user:
-     name: "{{ username }}"
-     state: present
-     uid: 999999
-     generate_ssh_key: yes
-   become: yes
- 
-    - name: "Install Nginx"
-      ansible.builtin.apt:
-        name: nginx
-        state: present
+- name: run cowsay-nginx 
+  hosts: all
+  
+  handlers:
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
 
-          - name: "Configure .bashrc"
-            shell: |
-              echo asd   
+  tasks: 
+  - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+    ansible.builtin.apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: "Install Nginx"
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+
+  - name: delete default nginx site
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+
+# - name: copy cowsay html
+#   template:
+#     src: ###INSERT ROLE PATH TO HTML
+#     dest: /usr/share/ngnix/html ####FIX THIS
+#     owner: root
+#     group: root
+#     mode: '0644'
+#   notify: restart nginx
+
+
+ 
