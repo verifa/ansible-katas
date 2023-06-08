@@ -18,7 +18,7 @@ do
     docker exec ansible_katas_workspace cat ../root/.ssh/id_rsa.pub > id_rsa.pub
     docker exec $host mkdir root/.ssh
     docker cp id_rsa.pub $host:root/.ssh/authorized_keys
-
+    docker exec $host chown root:root root/.ssh/authorized_keys
     echo $host ip:$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $host)
 
 done
