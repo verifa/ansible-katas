@@ -1,6 +1,64 @@
 FROM ubuntu:latest
 
-RUN apt update
+# ###
+# For usage with ansible molecule
+# Use the following in the molecule.yml
+# Tested with:
+# - ubuntu:focal, ubuntu:bionic, ubuntu:xenial
+# - debian:buster, debian:stretch, debian:jessie
+# - centos:8, centos:7, centos:6
+# - fedora:32, fedora:31, fedora:30
+# - opensuse/leap:15.2, opensuse/leap:15.1, opensuse/leap:15.0
+# - alpine:3.12, alpine:3.11, alpine:3.10
+# ###
+# driver:
+#   name: docker
+# platforms:
+#   - name: molecule-ubuntu-focal
+#     image: ubuntu:focal
+#     dockerfile: Dockerfile.j2
+#     override_command: false
+#     privileged: true
+#
+#   - name: molecule-debian-buster
+#     image: debian:buster
+#     env:
+#       APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE: "1"
+#     dockerfile: Dockerfile.j2
+#     override_command: false
+#     privileged: true
+#
+#   - name: molecule-centos-7
+#     image: centos:7
+#     dockerfile: Dockerfile.j2
+#     override_command: false
+#     privileged: true
+# ###
+
+RUN  apt-get update \
+      && apt-get install -y dbus systemd gnupg systemd-sysv python3 sudo bash ca-certificates iproute2 python3-apt aptitude \
+      && apt-get clean
+
 RUN apt-get install openssh-client openssh-server -y
 
+# Don't start any optional services except for the few we need.
+# Ignore any errors since some directories could not exists on some distributions
+#RUN find /etc/systemd/system \
+#      /lib/systemd/system \
+#      /usr/lib/systemd/system \
+#      -path '*.wants/*' \
+#      -not -name '*dbus*' \
+#      -not -name '*journald*' \
+#      -not -name '*systemd-tmpfiles*' \
+#      -not -name '*systemd-user-sessions*' \
+#      -exec rm \{} \; ; >/dev/null 2>&1
+
+# If image does have systemd set the default to be multi-user else leave it as is.
+RUN if [ $(command -v systemctl) ]; then \
+      systemctl set-default multi-user.target; \
+    fi
+
+STOPSIGNAL SIGRTMIN+3
+
 ENTRYPOINT service ssh start && sleep infinity
+

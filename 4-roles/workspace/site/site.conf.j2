@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  listen [::]:80;
+  server_name cowsay-site;
+  root /var/www/cowsay-site;
+  location / {
+    try_files $uri $uri/ =404;
+  }
+}
