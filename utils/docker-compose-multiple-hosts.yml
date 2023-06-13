@@ -8,6 +8,7 @@ services:
     working_dir: /workspace
     volumes:
       - ${EXERCISE_PATH}/workspace:/workspace
+      - "/var/run/docker.sock:/var/run/docker.sock"
   host-1:
     build:
       context: .

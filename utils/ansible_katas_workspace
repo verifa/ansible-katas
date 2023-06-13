@@ -1,8 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt update
-RUN apt install python3-pip -y
-RUN apt-get install openssh-client -y
+RUN apt-get update && apt-get install python3-pip openssh-client ca-certificates curl gnupg -y
 
 RUN pip3 install --upgrade pip; \
     pip3 install --upgrade virtualenv; \
@@ -12,9 +10,12 @@ RUN pip3 install --upgrade pip; \
     pip3 install requests; \
     python3 -m pip install ansible;
 
+RUN pip3 install molecule
+
 RUN ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa
 RUN chmod 700 /root/.ssh
 RUN chmod 600 /root/.ssh/id_rsa
 
+RUN curl -sSL https://get.docker.com/ | sh
 
 ENTRYPOINT sleep infinity
