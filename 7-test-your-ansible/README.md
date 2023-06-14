@@ -1,13 +1,11 @@
-an exercise that goes through the basic sanity test steps. should maybe come earlier?
+an exercise that goes through the basic sanity test steps. perhaps these should be broken up into two, the linting and the molecule.
 
 1. is it valid yaml? yamllint
 2. is it valid ansible? ansible-test
-
-??????
 3. unit tests
-4. integration test
-??????
+4. integration test ? molecule
 
+TODO: see if we can get molecule working with existing role. 
 
     molecule init scenario -r install-nginx
     molecule init scenario -r cowsay-nginx-configuration
@@ -21,4 +19,5 @@ some deps:
     ansible-galaxy collection install community.docker
     python3 -m pip install --user "molecule-plugins[docker]"
 
+WITHOUT EXISTING ROLE:
     molecule init role --driver-name docker some_namespace.install_nginx

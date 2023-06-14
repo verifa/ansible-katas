@@ -7,7 +7,7 @@
       shell: |
         apt-get update -y
         apt-get install -y cowsay
-    # Below will be made by student
+    # Below will be inserted by student
     - name: Say something
       shell: |
         /usr/games/cowsay hewwo

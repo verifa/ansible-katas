@@ -1,5 +1,51 @@
-explanation of how we might have many hosts and want to categorise them and be able to specify in our playbooks what host groupings we want teh playbook to run on. queue inventory file. give an example file, then have them change hosts var in playbook to see how it will run on different groups?? have them insert the ips into different groups, then specify the playbook to run on one of the groups, then on the "all" tag, and see the difference. 
+# Intro
 
-short explanation of why we set the name variable in the inventory
+>explanation of how we might have many hosts. We might want to categorise them and be able to specify in our playbooks what host groupings we want the playbook to run on. queue inventory file. 
 
-todo: get better group names in the inventory?
+## exercise 
+>give them the example hosts file. Have them insert the ips into separate groups, then specify the playbook to run on one of the groups, then on the "all" tag, and see the difference. 
+```toml
+[group_1]
+INSERT_IP_1_HERE
+
+[group_2]
+INSERT_IP_2_HERE
+```
+In order to see check what group we ran on, just for fun, we can set a variable thats specific for each group. Lets give them a "name" variable that is set to their group name, and then have the cow speak it during the playbook run to see which group of hosts were targeted. add the following to your hosts file:
+
+```toml
+[group_1]
+INSERT_IP_1_HERE
+
+[group_2]
+INSERT_IP_2_HERE
+
+[group_1:vars]
+NAME=group_1
+
+[group_2:vars]
+NAME=group_2
+```
+
+and the following to your playbook.yaml:
+
+```yaml
+---
+- name: install cowsay
+  hosts: all ##change hosts group here
+  become: yes
+  tasks:
+    - name: Install cowsay
+      ansible.builtin.apt:
+        name: cowsay
+        state: present
+        update_cache: yes
+#new
+    - name: Say something
+      shell: |
+        /usr/games/cowsay "I just ran on {{ NAME }}"
+      register: out
+    - debug: var=out.stdout_lines
+```
+
+Run the playbook again with different hosts values and see what output you get.

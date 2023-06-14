@@ -1,5 +1,4 @@
 ---
-
 handlers:
 - name: restart nginx
   service:
@@ -16,6 +15,6 @@ handlers:
   hosts: all
   become: true
   roles:
-  - cowsay-nginx-configuration
+  - configure-cowsay-nginx
   notify: restart nginx
 
