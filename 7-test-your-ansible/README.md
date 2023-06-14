@@ -16,20 +16,9 @@ This will create a default Molecule testing scenario within each role's director
 Now let's set up a basic test for the install-nginx role.
 Navigate to the install-nginx/molecule/default directory, where you will find a converge.yml file, which is the playbook that Molecule will run against its instance. In this case, it might look something like:
 
-    ---
-    - name: Verify
-    hosts: all
-    tasks:
-        - name: Check if nginx is installed
-        command: which nginx
-        changed_when: false
-        - name: Check if nginx is running
-        systemd:
-            name: nginx
-            state: started
-        register: service_status
-        - assert:
-            that:
-            - 'service_status.status == "running"'
-            fail_msg: "nginx is not running"
-            success_msg: "nginx is running"
+some deps:
+
+    ansible-galaxy collection install community.docker
+    python3 -m pip install --user "molecule-plugins[docker]"
+
+    molecule init role --driver-name docker some_namespace.install_nginx
