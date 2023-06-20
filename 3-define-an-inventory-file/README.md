@@ -11,7 +11,7 @@ INSERT_IP_1_HERE
 [group_2]
 INSERT_IP_2_HERE
 ```
-run the playbook: (note the difference between previous runs as we are now pointing to a hosts file rather than specific ips.)
+run the playbook: (note the difference in the command from previous runs as we are now pointing to a hosts file rather than specific ips.) TODO: when running here it can be a bit glitchy as it asks for the known hosts confirmation on  both ssh connections, gotta find a nice workaround to make this a bit more clean.
 ```
 ansible-playbook -i hosts playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
