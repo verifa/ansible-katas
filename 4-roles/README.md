@@ -56,7 +56,7 @@ Take a look at our playbook "playbook-pre-roles.yml".
       use: service  # disclaimer on this shit
 ```
 
-This playbook installs a webserver called Nginx, and configures it with some custom configuration, and finally starts the server. The nitty details are not important to us, but as you can see, this playbook is starting to grow. It is also taking on the role of installing nginx, and configuring it. It is reasonable to assume that we might perhaps want to have a playbook that installs or configures nginx in the future as well. Perhaps only one of them.
+This playbook installs a webserver called Nginx, and configures it with some custom configuration, and finally starts the server. The nitty details are not important to us, but as you can see, this playbook is starting to grow. It is also taking on the role of both installing nginx, and configuring it. It is also reasonable to assume that we might perhaps want to have a playbook that does one or the other of these things again in the future.
 
 > continue explanation or whatever...
 
@@ -72,32 +72,72 @@ create role boiler plate
 
 Copy the related tasks to our new roles into the tasks folder so that they now look like:
 
+install-nginx/tasks/main.yml
 ```yaml
-insert example role tasks here too lazy atm. TODO:
+---
+# tasks file for install-nginx
+  - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+    ansible.builtin.apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: "Install Nginx"
+    ansible.builtin.apt:
+      name: nginx
+      state: present
+```
+
+configure-cowsay-nginx/tasks/main.yml
+```yaml
+---
+# tasks file for configure-cowsay-nginx
+  - name: "create www directory"
+    file:
+      path: /var/www/cowsay-site
+      state: directory
+      mode: '0775'
+      owner: root #"{{ ansible_user }}"
+      group: root #"{{ ansible_user }}"
+
+  - name: delete default nginx site
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+
+  - name: copy nginx site.conf
+    template:
+      src: site/site.conf.j2
+      dest: /etc/nginx/sites-enabled/cowsay-site
+      owner: root
+      group: root
+      mode: '0644'
+  
+  - name: copy nginx index.html
+    template:
+      src: site/index.html
+      dest: /var/www/cowsay-site
+      owner: root
+      group: root
+      mode: '0644'
 ```
 
 If we now look at the playbook "playbook-post-roles.yml":
 
 ```yaml
 ---
-handlers:
-- name: restart nginx
-  service:
-    name: nginx
-    state: restarted
-
-- name: install nginx
+- name: run cowsay-nginx 
   hosts: all
-  become: true
-  roles:
-  - install-nginx
 
-- name: Configure nginx
-  hosts: all
-  become: true
   roles:
-  - configure-cowsay-nginx
-  notify: restart nginx
+    - role: install-nginx
+    - role: configure-cowsay-nginx
+
+  tasks:
+  - name: "start nginx"
+    service: 
+      name: nginx
+      state: started
+      use: service  # disclaimer on this shit
 ```
 
 
@@ -106,7 +146,7 @@ handlers:
 try to run the playbook and then we will navigate to the url and see if our webserver is now correctly serving.
 
 ```
-ansible-playbook -i HOST_IP, playbook-post-roles.yaml --private-key ~/.ssh/id_rsa -u root
+ansible-playbook -i HOST_IP, playbook-post-roles.yml --private-key ~/.ssh/id_rsa -u root
 ```
 
 navigate to localhost:80 to see the result.

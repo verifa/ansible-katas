@@ -1,20 +1,14 @@
 ---
-handlers:
-- name: restart nginx
-  service:
-    name: nginx
-    state: restarted
-
-- name: install nginx
+- name: run cowsay-nginx 
   hosts: all
-  become: true
-  roles:
-  - install-nginx
 
-- name: Configure nginx
-  hosts: all
-  become: true
   roles:
-  - configure-cowsay-nginx
-  notify: restart nginx
+    - role: install-nginx
+    - role: configure-cowsay-nginx
 
+  tasks:
+  - name: "start nginx"
+    service: 
+      name: nginx
+      state: started
+      use: service  # disclaimer on this shit

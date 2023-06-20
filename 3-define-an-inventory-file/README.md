@@ -11,6 +11,10 @@ INSERT_IP_1_HERE
 [group_2]
 INSERT_IP_2_HERE
 ```
+run the playbook: (note the difference between previous runs as we are now pointing to a hosts file rather than specific ips.)
+```
+ansible-playbook -i hosts playbook.yaml --private-key ~/.ssh/id_rsa -u root
+```
 In order to see check what group we ran on, just for fun, we can set a variable thats specific for each group. Lets give them a "name" variable that is set to their group name, and then have the cow speak it during the playbook run to see which group of hosts were targeted. add the following to your hosts file:
 
 ```toml
@@ -20,6 +24,7 @@ INSERT_IP_1_HERE
 [group_2]
 INSERT_IP_2_HERE
 
+## new content
 [group_1:vars]
 NAME=group_1
 
