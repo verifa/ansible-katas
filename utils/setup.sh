@@ -10,7 +10,7 @@ fi
 
 
 docker-compose -f $(cat running_compose) down
-docker-compose -f $config up -d --build
+docker-compose -f $config -p ansible_katas up -d --build
 
 # add to hosts
 for host in $(docker inspect --format='{{.Name}}' $(docker ps -aq --no-trunc) | cut -c2- | grep ansible_katas_host)
