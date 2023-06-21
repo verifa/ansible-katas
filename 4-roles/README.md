@@ -63,14 +63,12 @@ This playbook installs a webserver called Nginx, and configures it with some cus
 
 ## exercise
 
-* initialise the roles
-
-create role boiler plate
+1. initialise the roles by running the following commands:
 >$ ansible-galaxy init install-nginx
 
 >$ ansible-galaxy init configure-cowsay-nginx
 
-Copy the related tasks to our new roles into the tasks folder so that they now look like:
+2. Copy the related tasks to our new roles into the tasks folder so that they now look like:
 
 install-nginx/tasks/main.yml
 ```yaml
@@ -143,7 +141,7 @@ If we now look at the playbook "playbook-post-roles.yml":
 
 >explanation of how the playbook looks now.
 
-try to run the playbook and then we will navigate to the url and see if our webserver is now correctly serving.
+3. Run the playbook and then we will navigate to the url and see if our webserver is now correctly serving.
 
 ```
 ansible-playbook -i HOST_IP, playbook-post-roles.yml --private-key ~/.ssh/id_rsa -u root
