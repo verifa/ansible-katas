@@ -5,10 +5,13 @@ an exercise that goes through the basic sanity test steps. perhaps these should 
 3. unit tests
 4. integration test ? molecule
 
-TODO: see if we can get molecule working with existing role. 
 
+
+With existing role:
     molecule init scenario -r install-nginx
     molecule init scenario -r cowsay-nginx-configuration
+without existing role: 
+    molecule init role --driver-name docker some_namespace.install_nginx
 
 This will create a default Molecule testing scenario within each role's directory.
 Now let's set up a basic test for the install-nginx role.
@@ -18,6 +21,3 @@ some deps:
 
     ansible-galaxy collection install community.docker
     python3 -m pip install --user "molecule-plugins[docker]"
-
-WITHOUT EXISTING ROLE:
-    molecule init role --driver-name docker some_namespace.install_nginx
