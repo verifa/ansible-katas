@@ -1,9 +1,9 @@
 an exercise that goes through the basic sanity test steps. perhaps these should be broken up into two, the linting and the molecule.
 
 1. is it valid yaml? yamllint
-2. is it valid ansible? ansible-test
+2. is it valid ansible? ansible-lint, ansible-playbook --syntax-check
 3. unit tests
-4. integration test ? molecule
+4. integration test ? molecule, ansible-playbook --check    
 
 
 With existing role:
