@@ -2,6 +2,8 @@
 
 <em>Most documentation in this repository can be considered placeholder as we are still finalising what the exercises and the kata repository in general will look like. </em>
 
+Feedback in the form of issues would be great :^). 
+
 In this repository you will find repeatable exercise katas that you can download and repeat as many times as you like. Their intended purpose is to teach you the basics of Ansible, as well as how to work with best practices once you've mastered the basics. 
 
 We have created an isolated training environment for these exercises, thus making it only required to have docker installed to run. The isolated environment will serve as a guardrail in case you manage to run some Ansible that will detrimentally change some state on the target machine. In such a case you can simply run the script that creates the environment again, and it will remove the old one and create a fresh new one. The environment will also provide some simulated machines to run your exercises against. 
