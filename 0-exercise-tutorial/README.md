@@ -1,11 +1,11 @@
 # Exercise tutorial
 
-We have created an isolated training environment for these Ansible exercises, thus making it only required to have docker installed to run. The isolated environment will serve as a guardrail in case you manage to run some Ansible that will detrimentally change some state on the target machine. In such a case you can simply run the script that creates the environment again, and it will remove the old one and create a fresh new one. The environment will also provide some simulated machines to run your exercises against. 
+We have created an isolated training environment for these Ansible exercises, thus making it only required to have docker installed to run. The isolated environment will serve as a guardrail in case you manage to run some Ansible that will detrimentally change some state on the target machine. In such a case you can simply run the script that creates the environment again, and it will remove the old one and create a fresh new one. The environment will also provide some simulated machines to run your exercises against.
 
 ## how to start
 
 1. navigate to the folder of the exercise you want to run.
-2. run the setup.sh script inside of the exercise folder (this might take a few minutes your first time, but will only take a few seconds for the rest of the exercises.) 
+2. run the setup.sh script inside of the exercise folder (this might take a few minutes your first time, but will only take a few seconds for the rest of the exercises.)
 >./setup.sh
 3. You will now be inside the training environment workspace, ready to go!
 

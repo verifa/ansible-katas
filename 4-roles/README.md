@@ -1,15 +1,15 @@
 
-# Intro 
-> intro to roles and their advantages. yada yada...As our playbooks grow, we can separate them out into logical groupings called roles, which we can then bundle with role-based variables, files, tasks, handlers and more. Our playbook will then consist of running a selection of roles, and the individual roles will contain the actual task implementations. this makes them reusable by other playbooks etc etc. 
+# Intro
+> intro to roles and their advantages. yada yada...As our playbooks grow, we can separate them out into logical groupings called roles, which we can then bundle with role-based variables, files, tasks, handlers and more. Our playbook will then consist of running a selection of roles, and the individual roles will contain the actual task implementations. this makes them reusable by other playbooks etc etc.
 
 Take a look at our playbook "playbook-pre-roles.yml".
 
 ```yaml
 ---
-- name: run cowsay-nginx 
+- name: run cowsay-nginx
   hosts: all
 
-  tasks: 
+  tasks:
   - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
     ansible.builtin.apt:
       update_cache: yes
@@ -19,7 +19,7 @@ Take a look at our playbook "playbook-pre-roles.yml".
     ansible.builtin.apt:
       name: nginx
       state: present
-  
+
   - name: "create www directory"
     file:
       path: /var/www/cowsay-site
@@ -40,7 +40,7 @@ Take a look at our playbook "playbook-pre-roles.yml".
       owner: root
       group: root
       mode: '0644'
-  
+
   - name: copy nginx index.html
     template:
       src: site/index.html
@@ -50,7 +50,7 @@ Take a look at our playbook "playbook-pre-roles.yml".
       mode: '0644'
 
   - name: "start nginx"
-    service: 
+    service:
       name: nginx
       state: started
       use: service  # disclaimer on this shit
@@ -109,7 +109,7 @@ configure-cowsay-nginx/tasks/main.yml
       owner: root
       group: root
       mode: '0644'
-  
+
   - name: copy nginx index.html
     template:
       src: site/index.html
@@ -123,7 +123,7 @@ If we now look at the playbook "playbook-post-roles.yml":
 
 ```yaml
 ---
-- name: run cowsay-nginx 
+- name: run cowsay-nginx
   hosts: all
 
   roles:
@@ -132,7 +132,7 @@ If we now look at the playbook "playbook-post-roles.yml":
 
   tasks:
   - name: "start nginx"
-    service: 
+    service:
       name: nginx
       state: started
       use: service  # disclaimer on this shit
@@ -156,7 +156,7 @@ navigate to localhost:80 to see the result.
 Always use descriptive names for your roles, tasks, and variables. Document the intent and the purpose of your roles thoroughly and point out any variables that the user has to set. Set sane defaults and simplify your roles as much as possible to allow users to get onboarded quickly.
 Never place secrets and sensitive data in your roles YAML files. Secret values should be passed to the role at execution time by the play as a variable and should never be stored in any code repository.
 At first, it might be tempting to define a role that handles many responsibilities. For instance, we could create a role that installs multiple components, a common anti-pattern. Try to follow the separation of concerns design principle as much as possible and separate your roles based on different functionalities or technical components.
-Try to keep your roles as loosely coupled as possible and avoid adding too many dependencies. 
+Try to keep your roles as loosely coupled as possible and avoid adding too many dependencies.
 To control the execution order of roles and tasks, use the import_role or Include_role tasks instead of the classic roles keyword.
 When it makes sense, group your tasks in separate task files for improved clarity and organization.
 

@@ -1,7 +1,7 @@
 # Run a simple playbook
 
 > Breakdown about what a playbook is.
-> 
+
 ## The playbook
 Playbook installs `cowsay` on the host(s).
 
@@ -29,7 +29,7 @@ lets add a new task that checks that the previous installation was successful by
       shell: |
         /usr/games/cowsay hewwo
       register: out
-    - debug: var=out.stdout_lines 
+    - debug: var=out.stdout_lines
 ```
 
 >short explanation of the shell and debug plugins.
