@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 param=$@
 
 if [[ $param == "multiple-hosts" ]]; then
