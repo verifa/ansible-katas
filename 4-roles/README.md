@@ -159,5 +159,3 @@ At first, it might be tempting to define a role that handles many responsibiliti
 Try to keep your roles as loosely coupled as possible and avoid adding too many dependencies.
 To control the execution order of roles and tasks, use the import_role or Include_role tasks instead of the classic roles keyword.
 When it makes sense, group your tasks in separate task files for improved clarity and organization.
-
-

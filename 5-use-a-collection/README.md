@@ -1,4 +1,4 @@
-Explanation of collections, why and when to use them. link to website blabala. 
+Explanation of collections, why and when to use them. link to website blabala.
 
 exercise:
 have them use a basic collection. We have to make sure its something they can easily check if a run was successful.
