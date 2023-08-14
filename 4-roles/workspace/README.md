@@ -11,12 +11,12 @@ Take a look at our playbook "playbook-pre-roles.yml".
 
   tasks:
   - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
-    ansible.builtin.apt:
+    ansible.builtin.package:
       update_cache: yes
       cache_valid_time: 3600
 
   - name: "Install Nginx"
-    ansible.builtin.apt:
+    ansible.builtin.package:
       name: nginx
       state: present
 
@@ -75,12 +75,12 @@ install-nginx/tasks/main.yml
 ---
 # tasks file for install-nginx
   - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
-    ansible.builtin.apt:
+    ansible.builtin.package:
       update_cache: yes
       cache_valid_time: 3600
 
   - name: "Install Nginx"
-    ansible.builtin.apt:
+    ansible.builtin.package:
       name: nginx
       state: present
 ```

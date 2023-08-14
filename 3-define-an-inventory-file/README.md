@@ -48,7 +48,7 @@ NAME=group_2
   become: yes
   tasks:
     - name: Install cowsay
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name: cowsay
         state: present
         update_cache: yes
