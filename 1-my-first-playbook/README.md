@@ -13,10 +13,10 @@ on a host[^1].
 
 ## Exercise 1
 
-*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment.*
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
 1. Take a quick look at the `playbook.yaml` in the workspace directory.
 
-2. Let's run the playbook by copy pasting the following command after replacing HOST_IP with the ip that was output into your terminal when you ran your `setup.sh`.
+2. Let's run the playbook. Copy paste the following command into your terminal after replacing HOST_IP with the ip that was generated when you ran the `setup.sh`.
 ```
 ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
