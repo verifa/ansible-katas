@@ -1,9 +1,16 @@
-# Intro
+# Define an Inventory File
 
->explanation of how we might have many hosts. We might want to categorise them and be able to specify in our playbooks what host groupings we want the playbook to run on. queue inventory file.
+This exercise will introduce you to hosts and the inventory file.
 
-## exercise
->give them the example hosts file.
+## Introduction
+
+We have until now glossed over the `hosts: all` parameter seen in our plays. Simply put, a host is ansibles name for the target machine we want the tasks to execute on, ie; the machine we want to change. As you can imagine, in the real world we might have access to a massive amount of different hosts, and we might have playbooks that we want to be able to run on several of these hosts at once. We do this by organising all our different hosts into one file, called an `inventory`, and then we specify in the playbook which hosts from the inventory file we want the play to run on. Can you guess now what `hosts: all` means?
+
+## Inventory file
+
+The inventory file is a TOML-file where we can insert our hosts ip-address along with a desired tag or grouping for that host so that we can easily reference it from the playbook. For all possible inventory options see [here](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html).
+
+Below is an example inventory file where we have created two groups; `group_1` and `group_2`. This file also exists inside our exercise workspace as `hosts`, which is a common naming convention for your inventory file.
 
 ```toml
 [group_1]
@@ -12,17 +19,28 @@ INSERT_IP_1_HERE
 [group_2]
 INSERT_IP_2_HERE
 ```
-1. Have them insert the generated ips from the setup script into separate groups.
-2. specify the playbook to run on one of the groups, run the playbook.
-3. specify the playbook to run on the "all" tag, and see the difference.
 
-run the playbook: (note the difference in the command from previous runs as we are now pointing to a hosts file rather than specific ips.) TODO: when running here it can be a bit glitchy as it asks for the known hosts confirmation on  both ssh connections, gotta find a nice workaround to make this a bit more clean.
+## Exercise
+
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+
+1. Open the `hosts` file. Insert each of the two generated ips from your terminal during setup into separate groups by replacing the `INSERT_IP_X_HERE` example text.
+
+2. Open the `playbook.yaml` file. Specify the play to run on one of the groups by changing `hosts: all` to `hosts: group_1`.
+
+3. Run the playbook with the command below. This time there will be no need to edit the command with an ip adress, as we will be using an inventory file.
+
 ```
 ansible-playbook -i hosts playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
-In order to see check what group we ran on, just for fun, we can set a variable thats specific for each group. Lets give them a "name" variable that is set to their group name, and then have the cow speak it during the playbook run to see which group of hosts were targeted.
 
-4. Add the following to your hosts file:
+*note the difference in the command from previous runs as we are now pointing to a hosts file rather than a specific ip.*
+
+4. Open the `playbook.yaml` file once more. Specify the play to run on the `hosts: all` tag again. Run the playbook to see the difference.
+
+In order to see check what group we ran on, just for fun, we can set a variable thats specific for each group. Lets give them a "name" variable that is set to their group name, and then have the cow say it during the playbook run to see which group of hosts were targeted.
+
+5. Add the following to your hosts file:
 
 ```toml
 [group_1]
@@ -39,7 +57,7 @@ NAME=group_1
 NAME=group_2
 ```
 
-5. add the following to your playbook.yaml:
+6. add the following to your playbook.yaml:
 
 ```yaml
 ---
@@ -60,4 +78,4 @@ NAME=group_2
     - debug: var=out.stdout_lines
 ```
 
-6. Run the playbook again with different hosts values and see what output you get.
+7. Run the playbook again with different hosts values and see what output you get.
