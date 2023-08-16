@@ -19,19 +19,21 @@ on a host[^1].
 
 2. Let's run the playbook. Copy paste the following command into your terminal after replacing HOST_IP with the ip that was generated when you ran the `setup.sh`.
 
-3. Answer "yes" to the SSH prompt asking if you want to continue connecting.
 ```
 ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
+
 ![playbook run helper image](/utils/assets/my-first-playbook_img_1.png)
 
-### What happened
+3. Answer "yes" to the SSH prompt asking if you want to continue connecting.
+
+### What happened?
 
 If everything ran correctly, we should see some output like the example image below:
 
 ![playbook run output image](/utils/assets/my-first-playbook_img_2.png)
 
-Let's take a look at some of the details of the playbook to understand what happened.
+Let's open up the `playbook.yaml` again and take a look at some of the details to understand what happened.
 
 For now we only have one *play*, named "install cowsay". The play has the parameters `hosts: all` and  `become: yes` which can be ignored for now.
 
