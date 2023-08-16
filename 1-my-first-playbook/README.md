@@ -6,7 +6,7 @@ This exercise will introduce you to Ansible playbooks and how to run them.
 In order to perform any action with Ansible we need to write a *playbook*. An Ansible Playbook is a YAML file where we can define series of tasks that we want Ansible to perform. Defining our desired configuration of our systems in the form of playbooks and tasks helps us ensure consistent setup and configuration across all our different environments, every time we want to perform them.
 
 ## The playbook
-Let's take a look at an example playbook to help us understand the basics. In this case, our playbook will install [cowsay](https://pypi.org/project/cowsay/)
+We will use an example playbook to help us understand the basics. In this case, our playbook will install [cowsay](https://pypi.org/project/cowsay/)
 on a host[^1].
 
 [^1]: A host is Ansibles name for the machine(s) we will be configuring.
@@ -15,7 +15,7 @@ on a host[^1].
 
 *Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
 
-1. Take a quick look at the `playbook.yaml` in the workspace directory.
+1. Take a look at the `playbook.yaml` in the workspace directory.
 
 2. Let's run the playbook. Copy paste the following command into your terminal after replacing HOST_IP with the ip that was generated when you ran the `setup.sh`.
 
