@@ -1,13 +1,17 @@
-- hosts: all
+---
+- name: run nginx
+  hosts: all
+
   collections:
-    - my_namespace.my_collection
+    - nginxinc.nginx_core
 
   tasks:
-    - import_role:
-        name: role1
+  - name: Install nginx
+    ansible.builtin.import_role:
+      name: nginx
 
-    - mymodule:
-        option1: value
-
-    - debug:
-        msg: '{{ lookup("my_namespace.my_collection.lookup1", "param1")| my_namespace.my_collection.filter1 }}'
+  - name: "start nginx"
+    service:
+      name: nginx
+      state: started
+      use: service
