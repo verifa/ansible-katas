@@ -5,7 +5,7 @@ This exercise will introduce you to roles and their applications.
 ## What are Roles?
 As our playbooks grow both in size and in numbers, we might feel a need to separate certain tasks into logical reusable groupings, which Ansible calls "Roles". I suppose the name alludes to the way an actor would take on a role in a play, as it does not have anything to do with permissions. Our playbook will then consist of running a selection of roles, and the individual roles will contain the actual task implementations. This is great if you have a large number of playbooks reusing similar code, as now when you have to update your playbooks, you only need to perform the change in the role, not every playbook implementing it. When we group together tasks into a role we can also then bundle them with role-based variables, files, handlers and more.
 
-Take a look at our playbook "playbook-pre-roles.yml".
+Take a look at our playbook `playbook-pre-roles.yml`.
 
 ```yaml
 ---
