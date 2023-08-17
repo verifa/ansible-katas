@@ -24,9 +24,7 @@ ansible-galaxy collection list
 
 3. To see where our collections ended up, we can have a look at `/root/.ansible/collections/ansible_collections/`.
 
-Reading through the [official collection documentation](https://galaxy.ansible.com/nginxinc/nginx_core) we know that the `deploy-nginx.yml` playbook will install nginx on our host.
-
-Lets install Nginx on a machine by importing the nginx installer role from the collection to our playbook.
+Lets install Nginx on our host by importing the nginx installer role from the collection to our playbook.
 
 4. Take a look at the playbook.yml.
 
@@ -51,7 +49,7 @@ Lets install Nginx on a machine by importing the nginx installer role from the c
 
 ```
 
-We have imported our previously downloaded collection into the playbook
+We have imported our previously downloaded collection into the playbook with the lines below:
 
 ```yaml
   collections:
