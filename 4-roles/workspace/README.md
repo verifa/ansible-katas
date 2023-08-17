@@ -1,6 +1,9 @@
+# Roles
 
-# Intro
-> intro to roles and their advantages. yada yada...As our playbooks grow, we can separate them out into logical groupings called roles, which we can then bundle with role-based variables, files, tasks, handlers and more. Our playbook will then consist of running a selection of roles, and the individual roles will contain the actual task implementations. this makes them reusable by other playbooks etc etc.
+This exercise will introduce you to roles and their applications.
+
+## What are Roles?
+As our playbooks grow both in size and in numbers, we might feel a need to separate certain tasks into logical reusable groupings, which Ansible calls "Roles". I suppose the name alludes to the way an actor would take on a role in a play, as it does not have anything to do with permissions. Our playbook will then consist of running a selection of roles, and the individual roles will contain the actual task implementations. This is great if you have a large number of playbooks reusing similar code, as now when you have to update your playbooks, you only need to perform the change in the role, not every playbook implementing it. When we group together tasks into a role we can also then bundle them with role-based variables, files, handlers and more.
 
 Take a look at our playbook "playbook-pre-roles.yml".
 
@@ -56,21 +59,26 @@ Take a look at our playbook "playbook-pre-roles.yml".
       use: service  # disclaimer on this shit
 ```
 
-This playbook installs a webserver called Nginx, and configures it with some custom configuration, and finally starts the server. The nitty details are not important to us, but as you can see, this playbook is starting to grow. It is also taking on the role of both installing nginx, and configuring it. It is also reasonable to assume that we might perhaps want to have a playbook that does one or the other of these things again in the future.
+This playbook installs a webserver called Nginx, and configures it with some custom configuration, then finally starts the server. The nitty details are not important to us, but as you can see, this playbook is starting to grow. It is also taking on the role of both installing nginx, and configuring it, and it is reasonable to assume that we might perhaps want to have a playbook that does one or the other of these things again in the future. Enter the stage...Roles!
 
-> continue explanation or whatever...
+## Exercise
 
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
 
-## exercise
+Creating and implementing a role into your playbook is as simple as a command and some good old copy paste. However, the important thing to consider when creating one is making sure we document it well, so that it can be properly reused by ourselves and others down the line. That is for another exercise however.
+
+As discussed before, our playbook covers two responsibilities, or two roles; installing nginx, and configuring nginx for cowsay. Lets split these into two roles.
 
 1. initialise the roles by running the following commands:
->$ ansible-galaxy init install-nginx
-
->$ ansible-galaxy init configure-cowsay-nginx
-
+```
+ansible-galaxy init install-nginx
+```
+```
+ansible-galaxy init configure-cowsay-nginx
+```
 2. Copy the related tasks to our new roles into the tasks folder so that they now look like:
 
-install-nginx/tasks/main.yml
+`install-nginx/tasks/main.yml`
 ```yaml
 ---
 # tasks file for install-nginx
@@ -85,7 +93,7 @@ install-nginx/tasks/main.yml
       state: present
 ```
 
-configure-cowsay-nginx/tasks/main.yml
+`configure-cowsay-nginx/tasks/main.yml`
 ```yaml
 ---
 # tasks file for configure-cowsay-nginx
@@ -119,7 +127,7 @@ configure-cowsay-nginx/tasks/main.yml
       mode: '0644'
 ```
 
-If we now look at the playbook "playbook-post-roles.yml":
+We can now look at the playbook `playbook-post-roles.yml`:
 
 ```yaml
 ---
@@ -138,10 +146,9 @@ If we now look at the playbook "playbook-post-roles.yml":
       use: service  # disclaimer on this shit
 ```
 
+We have introduced a new section called `roles` that consists of our two roles, on the same level hierarchy as the tasks section.
 
->explanation of how the playbook looks now.
-
-3. Run the playbook and then we will navigate to the url and see if our webserver is now correctly serving.
+3. Run the playbook. *Remember to replace the ip like before.*
 
 ```
 ansible-playbook -i HOST_IP, playbook-post-roles.yml --private-key ~/.ssh/id_rsa -u root
@@ -149,13 +156,4 @@ ansible-playbook -i HOST_IP, playbook-post-roles.yml --private-key ~/.ssh/id_rsa
 
 navigate to localhost:80 to see the result.
 
-> side explanation of why its localhost and not the ip adress of the target. yada yada consequence of our demo environment.
-
-
-### extras
-Always use descriptive names for your roles, tasks, and variables. Document the intent and the purpose of your roles thoroughly and point out any variables that the user has to set. Set sane defaults and simplify your roles as much as possible to allow users to get onboarded quickly.
-Never place secrets and sensitive data in your roles YAML files. Secret values should be passed to the role at execution time by the play as a variable and should never be stored in any code repository.
-At first, it might be tempting to define a role that handles many responsibilities. For instance, we could create a role that installs multiple components, a common anti-pattern. Try to follow the separation of concerns design principle as much as possible and separate your roles based on different functionalities or technical components.
-Try to keep your roles as loosely coupled as possible and avoid adding too many dependencies.
-To control the execution order of roles and tasks, use the import_role or Include_role tasks instead of the classic roles keyword.
-When it makes sense, group your tasks in separate task files for improved clarity and organization.
+*Normally we would access a host machines ports for this result, not our Ansible machines localhost, but due to convenience in the training environment, such is life.*
