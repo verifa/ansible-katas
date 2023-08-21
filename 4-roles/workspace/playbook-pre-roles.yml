@@ -3,47 +3,47 @@
   hosts: all
 
   tasks:
-  - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
-    ansible.builtin.package:
-      update_cache: yes
-      cache_valid_time: 3600
+    - name: Only run "update_cache=yes" if last run is more than 3600 seconds ago
+      ansible.builtin.package:
+        update_cache: yes
+        cache_valid_time: 3600
 
-  - name: "Install Nginx"
-    ansible.builtin.package:
-      name: nginx
-      state: present
+    - name: "Install Nginx"
+      ansible.builtin.package:
+        name: nginx
+        state: present
 
-  - name: "create www directory"
-    file:
-      path: /var/www/cowsay-site
-      state: directory
-      mode: '0775'
-      owner: root #"{{ ansible_user }}"
-      group: root #"{{ ansible_user }}"
+    - name: "create www directory"
+      file:
+        path: /var/www/cowsay-site
+        state: directory
+        mode: '0775'
+        owner: root  # "{{ ansible_user }}"
+        group: root  # "{{ ansible_user }}"
 
-  - name: delete default nginx site
-    file:
-      path: /etc/nginx/sites-enabled/default
-      state: absent
+    - name: delete default nginx site
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
 
-  - name: copy nginx site.conf
-    template:
-      src: site/site.conf.j2
-      dest: /etc/nginx/sites-enabled/cowsay-site
-      owner: root
-      group: root
-      mode: '0644'
+    - name: copy nginx site.conf
+      template:
+        src: site/site.conf.j2
+        dest: /etc/nginx/sites-enabled/cowsay-site
+        owner: root
+        group: root
+        mode: '0644'
 
-  - name: copy nginx index.html
-    template:
-      src: site/index.html
-      dest: /var/www/cowsay-site
-      owner: root
-      group: root
-      mode: '0644'
+    - name: copy nginx index.html
+      template:
+        src: site/index.html
+        dest: /var/www/cowsay-site
+        owner: root
+        group: root
+        mode: '0644'
 
-  - name: "start nginx"
-    service:
-      name: nginx
-      state: started
-      use: service  # disclaimer on this shit
+    - name: "start nginx"
+      service:
+        name: nginx
+        state: started
+        use: service  # disclaimer on this shit
