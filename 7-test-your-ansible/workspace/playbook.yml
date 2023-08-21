@@ -1,0 +1,23 @@
+---
+- name: run cowsay-nginx
+  hosts: all
+
+  tasks:
+    - name: Only update cache if last run is more than 3600 seconds ago
+      ansible.builtin.package:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: "Install Nginx"
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: "create www directory"
+      file:
+        path: /var/www/cowsay-site
+        state: directory
+        mode: '0775'
+        owner: root # "{{ ansible_user }}"
+        group: root  #"{{ ansible_user }}"
+
