@@ -20,5 +20,7 @@ RUN curl -sSL https://get.docker.com/ | sh
 
 RUN ansible-galaxy collection install community.docker
 RUN python3 -m pip install --user "molecule-plugins[docker]"
+RUN apt-get install nano; \
+    echo export EDITOR=nano >> ~/.bashrc
 
 ENTRYPOINT sleep infinity

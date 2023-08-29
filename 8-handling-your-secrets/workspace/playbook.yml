@@ -1,0 +1,19 @@
+---
+- name: install cowsay
+  hosts: all
+  become: yes
+  vars_files: # new
+    - my-first-vault.yml # new
+
+  tasks:
+    - name: Install cowsay
+      ansible.builtin.package:
+        name: cowsay
+        state: present
+        update_cache: yes
+
+    - name: Say something
+      shell: |
+        /usr/games/cowsay {{ INSERT_SECRET_NAME_HERE }}
+      register: out
+    - debug: var=out.stdout_lines
