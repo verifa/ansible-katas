@@ -148,7 +148,7 @@ We can now look at the playbook `playbook-post-roles.yml`:
 
 We have introduced a new section called `roles` that consists of our two roles, on the same level hierarchy as the tasks section.
 
-3. Run the playbook. *Remember to replace the ip like before.*
+3. Run the playbook. *Remember to replace the HOST_IP like before.*
 
 ```
 ansible-playbook -i HOST_IP, playbook-post-roles.yml --private-key ~/.ssh/id_rsa -u root

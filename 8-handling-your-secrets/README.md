@@ -63,7 +63,7 @@ We have added `vars_files` and as a list entry we added our `my-first-vault.yml`
 
 The time has come to see if Ansible can successfully read the encrypted value in your ansible-vault file and use it in the playbook.
 
-6. Run the playbook:
+6. Run the playbook: *Remember to replace the HOST_IP like before.*
 
 ```
 ansible-playbook -i HOST_IP, playbook.yml --private-key ~/.ssh/id_rsa --ask-vault-pass -u root

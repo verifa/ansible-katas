@@ -16,7 +16,7 @@ Let's use a builtin module to perform the same tasks as the previous exercise. W
 We can see that we are now using `ansible.builtin.package` instead of the `shell` module. This is ansibles generic package manager module for installing and updating packages. There are builtin modules for specific package managers like apt, but using the generic module where possible keeps our playbooks a little more flexible to different operating systems, as ansibles generic modules will try to use the correct module for your hosts operating system.
 
 
-2. Run the playbook:
+2. Run the playbook: *Remember to replace the HOST_IP like before.*
 
 ```
 ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
