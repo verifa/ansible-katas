@@ -9,7 +9,9 @@ else
     config=docker-compose.yml
 fi
 
-docker-compose -f $(cat running_compose) -p ansible_katas down
+if [ -f running_compose ]; then
+    docker-compose -f $(cat running_compose) -p ansible_katas down
+fi
 docker-compose -f $config -p ansible_katas up -d --build
 
 # add to hosts
