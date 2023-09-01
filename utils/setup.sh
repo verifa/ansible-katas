@@ -23,7 +23,7 @@ do
 
 done
 
-rm id_rsa.pub
+rm -f id_rsa.pub
 
 docker exec -ti ansible_katas_workspace bash
 
