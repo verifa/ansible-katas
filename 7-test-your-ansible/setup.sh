@@ -1,7 +1,11 @@
 #!/bin/bash
 
-echo "EXERCISE_PATH=$(pwd)" > ../utils/.env
+kata="$(basename $(pwd))"
 
-cd ../utils
-. setup.sh
-cd -
+#for docker to know where to mount to
+echo "EXERCISE_PATH=$(pwd)" > ../.utils/.env
+
+cd ../.utils
+. setup.sh $kata
+cd - > /dev/null
+

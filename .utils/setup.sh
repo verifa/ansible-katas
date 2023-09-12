@@ -27,7 +27,7 @@ done
 rm -f id_rsa.pub
 
 #create the workspace for the user
-rm -rf ../$1/workspace
+[ -d "../$1/workspace" ] && rm -rf ../$1/workspace
 cp -aR workspaces/$1/ ../$1/workspace
 cp ../$1/README.md ../$1/workspace
 
