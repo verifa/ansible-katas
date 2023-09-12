@@ -1,9 +1,8 @@
 #!/bin/bash
 
 set -e
-param=$@
 
-if [[ $param == "multiple-hosts" ]]; then
+if [[ $2 == "multiple-hosts" ]]; then
     config=docker-compose-multiple-hosts.yml
 else
     config=docker-compose.yml
@@ -26,6 +25,11 @@ do
 done
 
 rm -f id_rsa.pub
+
+#create the workspace for the user
+rm -rf ../$1/workspace
+cp -aR workspaces/$1/ ../$1/workspace
+cp ../$1/README.md ../$1/workspace
 
 docker exec -ti ansible_katas_workspace bash
 
