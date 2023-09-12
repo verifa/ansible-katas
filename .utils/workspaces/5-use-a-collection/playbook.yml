@@ -1,0 +1,17 @@
+---
+- name: run nginx
+  hosts: all
+
+  collections:
+    - nginxinc.nginx_core
+
+  tasks:
+  - name: Install nginx
+    ansible.builtin.import_role:
+      name: nginx
+
+  - name: "start nginx"
+    service:
+      name: nginx
+      state: started
+      use: service
