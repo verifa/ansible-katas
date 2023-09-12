@@ -1,2 +1,3 @@
-utils/.env
-utils/running_compose
+.utils/.env
+.utils/running_compose
+*/workspace
