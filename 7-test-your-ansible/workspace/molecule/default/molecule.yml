@@ -1,0 +1,35 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: server-1
+    image: docker.io/ubuntu:22.04
+    pre_build_image: false
+    dockerfile: ../../../../utils/ansible_katas_host
+    groups:
+    - web
+  - name: server-2
+    image: docker.io/ubuntu:22.04
+    pre_build_image: false
+    dockerfile: ../../../../utils/ansible_katas_host
+    groups:
+    - web
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: "${MOLECULE_PROJECT_DIRECTORY}/roles"
+  inventory:
+    group_vars:
+      web:
+        web_is_greatest: true
+    host_vars:
+      server-1:
+        web_san_dns: server1.example.com
+        web_san_ip: 10.0.0.1
+      server-2:
+        web_san_dns: server2.example.com
+        web_san_ip: 10.0.0.2
+verifier:
+  name: ansible

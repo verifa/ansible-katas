@@ -14,7 +14,7 @@ fi
 docker-compose -f $config -p ansible_katas up -d --build
 
 # add to hosts
-for host in $(docker inspect --format='{{.Name}}' $(docker ps -aq --no-trunc) | cut -c2- | grep ansible_katas_host)
+for host in $(docker ps -a --filter name=ansible_katas_host  --format "{{.Names}}")
 do
     docker exec ansible_katas_workspace cat ../root/.ssh/id_rsa.pub > id_rsa.pub
     docker exec $host mkdir root/.ssh

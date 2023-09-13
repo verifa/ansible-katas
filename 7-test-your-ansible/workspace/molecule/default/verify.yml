@@ -1,0 +1,11 @@
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Check config
+    shell: stat /var/www/cowsay-site
+    register: status_out
+
+  - name: Assert File was written
+    assert:
+      that: status_out.rc == 0
