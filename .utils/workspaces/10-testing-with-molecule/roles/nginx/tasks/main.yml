@@ -1,5 +1,5 @@
 ---
-- name: Only update cache if last run is more than 3600 seconds ago
+- name: "Update Cache"
   ansible.builtin.package:
     update_cache: true
     cache_valid_time: 3600
