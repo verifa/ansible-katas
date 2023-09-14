@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: ansible_katas_workspace
     container_name: ansible_katas_workspace
+    privileged: true
     working_dir: /workspace
     volumes:
       - ${EXERCISE_PATH}/workspace:/workspace
@@ -16,6 +17,7 @@ services:
     container_name: ansible_katas_host_1
     environment:
       - NAME=ansible_katas_host_1
+      - GROUP=hosts
   host-2:
     build:
       context: .
@@ -23,3 +25,4 @@ services:
     container_name: ansible_katas_host_2
     environment:
       - NAME=ansible_katas_host_2
+      - GROUP=hosts

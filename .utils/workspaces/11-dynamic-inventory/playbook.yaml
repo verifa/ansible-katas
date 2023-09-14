@@ -1,0 +1,9 @@
+---
+- name: Awesome Playbook
+  hosts: env_GROUP_hosts
+  gather_facts: false
+  tasks:
+  - name: Print the host's name in inventory
+    ansible.builtin.debug:
+      var: inventory_hostname
+      
