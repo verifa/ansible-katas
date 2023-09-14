@@ -1,7 +1,16 @@
+# Testing with Molecule
 
-######## THIS STUFF MIGHT BE DELETED, JUST TAKING NOTES ###########
+This exercise will introduce you to Molecule.
 
-### Installing Molecule
+## Introduction
+
+In our previous test exercise we ran some basic linting. However some more extensive testing is needed if we want to work safely in a production environment.
+
+Molecule is a testing tool that allows you to configure default or customised target machines and tests. Then on test execution Molecule spins up target machines and run the tests you configured against the hosts, while also checking for things such as idempotence. This means you could customise your target machines to look like your production environment, and use molecule to test your playbooks locally or in a CI/CD pipeline without having to run it against production! Let's try it out.
+
+## Installing Molecule
+
+*TODO: I see the steps below are done in the dockerfile now. Ive intentionally let the exercises contain manual install steps when something isnt included in Ansible by default, so people arent confused when they set this stuff up outside the exercise environment, but perhaps it can just be highlighted with a message about "this is what you would need to run, but its already done" or something to keep the exercises a bit more streamlined and quickly repeatable?*
 
 First of we need to install the Molecule CLI:
 
@@ -15,16 +24,14 @@ Then for the excerices we use the docker plugin, which is installed separately:
 python3 -m pip install --user "molecule-plugins[docker]"
 ```
 
-Molecule journey starts of great, the cli itself doesn't work but running as python module works:
+## Getting started
 
+We can initialize our Molecule structure with the following command.
 ```
-> molecule init scenario
-zsh: /opt/homebrew/bin/molecule: bad interpreter: /opt/homebrew/opt/python@3.9/bin/python3.9: no such file or directory
-> python3 -m molecule init scenario
-#OK!
-```
+python3 -m molecule init scenario
+````
 
-After init there's a new folder called `molecule` with a single scenario underneath, called `default`:
+We should now see a new folder called `molecule` with a single scenario underneath, called `default`:
 
 ```bash
 molecule
@@ -34,6 +41,17 @@ molecule
     ├── destroy.yml
     └── molecule.yml
 ```
+
+Molecule offers you the ability to customise your test targets, however for this exercise we will use the defaults. The `create.yml` and `destroy.yml` are responsible for the custom configuration, and we need to alter some things inside of them if we want molecule to know we want to run the defaults, or we can just delete the files... So let's do that!
+
+1. Delete the `create.yml` and `destroy.yml` files.
+```
+rm create.yml destroy.yml
+```
+
+You should also find a roles folder that is included in this exercise. This is the role we will be testing. If we look into `converge.yml` we can see that we specify molecule to run our nginx role.
+
+## Using molecule
 
 There's two main commands you use with `molecule`:
 
@@ -47,8 +65,18 @@ molecule converge
 
 The `test` subcommand is used to run the scenario and cleanup afterwards. The `converge` command is useful when developing since it skips the cleanup, allowing you to modify your role and then retrying, although arguably every now and then you might want to reset and start from scratch.
 
-### Shit ain't working
+2. Run the molecule test command
 
-So after initialising the scenario (molecule init scenario) the default scenario fails to really do anything. After some head scratching I figured there's a `create.yml` file, which I've not used in the past. This file can be used to build your "platforms"/instances by using Ansible directly, but I find that's quite an advanced an unnecessary. After removing that file, the Docker driver starts to work and builds the images as per spec. This seems like a super weird default, but looking at the docs there's an example of modifying the `create.yml` to make it work: <https://ansible.readthedocs.io/projects/molecule/docker/>. I guess the authors of the project prefer doing it themselves, but I disagree.
+```
+molecule test
+```
 
-It was the same story with `destroy.yml` naturally.
+There's quite a lot of output, but we should see that Molecule creates two instances.
+
+TODO: INSERT EXAMPLE IMAGE OF OUTPUT HERE
+
+If everything goes smoothly, we should also see it perform two runs. The second run is to test idempotence, meaning that the tasks should all return an "OK" status on the second run.
+
+TODO: INSERT EXAMPLE IMAGE OF OUTPUT HERE
+
+ A "CHANGED" status would indicate that either our task does not have proper checks in place to confirm its own status, or that our task is written poorly, and is altering something on the machine even after it should already have been done on the first run.
