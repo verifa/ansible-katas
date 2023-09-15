@@ -27,9 +27,12 @@ python3 -m pip install --user "molecule-plugins[docker]"
 ## Getting started
 
 We can initialize our Molecule structure with the following command.
-```
+
+*TODO: these files are already commited into the repo, how much work do we want to leave for the "student"?*
+
+```bash
 python3 -m molecule init scenario
-````
+```
 
 We should now see a new folder called `molecule` with a single scenario underneath, called `default`:
 
@@ -42,11 +45,12 @@ molecule
     └── molecule.yml
 ```
 
-Molecule offers you the ability to customise your test targets, however for this exercise we will use the defaults. The `create.yml` and `destroy.yml` are responsible for the custom configuration, and we need to alter some things inside of them if we want molecule to know we want to run the defaults, or we can just delete the files... So let's do that!
+Molecule offers you the ability to fully customise your test targets, however for this exercise we will use the Docker driver of Molecule with mostly it's default settings which are all contained in the `molecule.yml` file. The `create.yml` and `destroy.yml` are responsible for the custom test target configuration, and we would need to implement the creation and deletion logic for hosts in them, or we can just delete the files... So let's do that!
 
 1. Delete the `create.yml` and `destroy.yml` files.
-```
-rm create.yml destroy.yml
+
+```bash
+rm molecule/default/create.yml molecule/default/destroy.yml
 ```
 
 You should also find a roles folder that is included in this exercise. This is the role we will be testing. If we look into `converge.yml` we can see that we specify molecule to run our nginx role.
@@ -55,11 +59,11 @@ You should also find a roles folder that is included in this exercise. This is t
 
 There's two main commands you use with `molecule`:
 
-```
+```bash
 molecule test
 ```
 
-```
+```bash
 molecule converge
 ```
 
@@ -67,7 +71,7 @@ The `test` subcommand is used to run the scenario and cleanup afterwards. The `c
 
 2. Run the molecule test command
 
-```
+```bash
 molecule test
 ```
 
