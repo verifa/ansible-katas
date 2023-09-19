@@ -1,0 +1,31 @@
+---
+- name: "Update Cache"
+  ansible.builtin.package:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: "Install Nginx"
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: delete default nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: template nginx.conf
+  template:
+    src: lb.conf.j2
+    dest: /etc/nginx/conf.d/lb.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: "start nginx"
+  service:
+    name: nginx
+    state: started
+    # systemd does not work in the containers, but legacy 'service' works fine
+    # would be nice to fix systemd but it seems to require privileged access to host
+    use: service

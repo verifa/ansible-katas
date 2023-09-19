@@ -20,16 +20,17 @@ provisioner:
   name: ansible
   env:
     ANSIBLE_ROLES_PATH: "${MOLECULE_PROJECT_DIRECTORY}/roles"
-  inventory:
-    group_vars:
-      web:
-        web_is_greatest: true
-    host_vars:
-      server-1:
-        web_san_dns: server1.example.com
-        web_san_ip: 10.0.0.1
-      server-2:
-        web_san_dns: server2.example.com
-        web_san_ip: 10.0.0.2
+# we could also provide some group_vars and host_vars for testing!
+#  inventory:
+#    group_vars:
+#      web:
+#        name_of_variable: "value_of_variable"
+#    host_vars:
+#      server-1:
+#        web_san_dns: server1.example.com
+#        web_san_ip: 10.0.0.1
+#      server-2:
+#        web_san_dns: server2.example.com
+#        web_san_ip: 10.0.0.2
 verifier:
   name: ansible

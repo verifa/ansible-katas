@@ -1,0 +1,32 @@
+{{ ansible_managed|comment }}
+
+upstream backend {
+{% for server in groups[loadbalancer_backend_group] %}
+    server {{ hostvars[server]['ansible_facts']['default_ipv4']['address'] }}:80;
+{% endfor %}
+}
+
+# default server will be served if Host header does not match the frontend host
+server {
+        listen {{ loadbalancer_frontend_port }} default_server;
+        listen [::]:{{ loadbalancer_frontend_port }} default_server;
+
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+server {
+    listen {{ loadbalancer_frontend_port }};
+
+    server_name {{ loadbalancer_frontend_host }};
+
+    location / {
+        proxy_pass http://backend;
+    }
+}

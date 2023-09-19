@@ -1,0 +1,22 @@
+---
+- name: Gather facts so we know details about the backend hosts
+  hosts: env_GROUP_backend
+  gather_facts: true
+
+- name: LoadBalancer Playbook
+  hosts: env_GROUP_loadbalancer
+  gather_facts: true
+  tasks:
+  - ansible.builtin.include_role:
+      name: loadbalancer
+    vars:
+      # some of those facts gathered are used in a template in this role
+      loadbalancer_backend_group: env_GROUP_backend
+
+- name: Backend Playbook
+  hosts: env_GROUP_backend
+  gather_facts: true
+  tasks:
+  - ansible.builtin.include_role:
+      name: backend
+      

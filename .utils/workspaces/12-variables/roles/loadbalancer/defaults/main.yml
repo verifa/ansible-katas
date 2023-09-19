@@ -1,0 +1,4 @@
+---
+loadbalancer_frontend_port: 8080
+loadbalancer_frontend_protocol: http
+loadbalancer_frontend_host: localhost

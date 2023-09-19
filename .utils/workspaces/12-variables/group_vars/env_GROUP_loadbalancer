@@ -1,0 +1,2 @@
+---
+loadbalancer_frontend_host: "cowsay.127.0.0.1.nip.io"
