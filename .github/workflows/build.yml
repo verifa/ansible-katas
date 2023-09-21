@@ -20,14 +20,12 @@ jobs:
       # for signing
       id-token: write
     outputs:
-      image: ${{ steps.meta.outputs.tags }}
+      image: ${{ steps.image-output.outputs.image }}
       digest: ${{ steps.build-and-push.outputs.digest }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Install the cosign tool except on PR
-      # https://github.com/sigstore/cosign-installer
       - name: Install cosign
         uses: sigstore/cosign-installer@6e04d228eb30da1757ee4e1dd75a0ec73a653e06 #v3.1.1
         with:
@@ -44,7 +42,6 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3 # v3.0.0
 
-      # https://github.com/docker/login-action  
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
         with:
@@ -60,7 +57,16 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      # Build and push Docker image with Buildx (don't push on PR)
+      # Docker metadata action is kinda nice for labels etc. but it produces always more than 1 image:<tag> pair
+      # since using versioned tags is the proper way to pull images, let's output the current tag for sbom and provenance
+      # the latest version has same digest, so just outputting one of the tags should be ok for verification
+      - name: output image with the current tag
+        id: image-output
+        run: |
+          tag=$(echo ${{ github.ref }} | cut -d'/' -f3)
+          image="${REGISTRY}/${{ github.repository }}:$tag"
+          echo "image=${image}" >> "$GITHUB_OUTPUT"
+
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
@@ -121,11 +127,10 @@ jobs:
       - name: Attach SBOM to image
         if: startsWith(github.ref, 'refs/tags/') # only tags
         run: |
-          # syft pull the image and analyses the contents to generate an SBOM
+          # syft pulls the image and analyses the contents to generate an SBOM
           syft "${image}@${digest}" --output spdx-json --file sbom.spdx.json
-          # attach merged sbom as attestation (signed)
-          # process all images, since there might be multiple tags for the same digest
-          echo "${image}" | xargs -I {} cosign attest --predicate sbom-final.spdx.json --type spdxjson {}@${digest} --yes
+          # attach sbom as attestation (signed)
+          cosign attest --predicate sbom.spdx.json --type spdxjson ${image}@${digest} --yes
 
   # slsa-github-generator creates and pushes the provenance attestation
   provenance:
