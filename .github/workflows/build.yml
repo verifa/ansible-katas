@@ -21,7 +21,7 @@ jobs:
       id-token: write
     outputs:
       image: ${{ steps.meta.outputs.tags }}
-      digest: ${{ steps.build.outputs.digest }}
+      digest: ${{ steps.build-and-push.outputs.digest }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
