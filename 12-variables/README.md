@@ -109,3 +109,13 @@ ansible-playbook -i local.docker.yml --extra-vars "backend_bg_color=green" playb
 ```
 
 Now the background should be consistent!
+
+**TODO: move this to right places with description**
+
+![overview diagram](/.utils/assets/vars_overview.svg)
+
+![backend vars diagram](/.utils/assets/vars_backends.png)
+
+![loadbalancer vars diagram](/.utils/assets/vars_lb.png)
+
+![ansible facts diagram](/.utils/assets/vars_facts.svg)
