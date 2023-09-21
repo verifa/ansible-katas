@@ -2,6 +2,9 @@
 
 set -e
 
+IMAGE_TAG="v0.0.3"
+echo IMAGE_TAG="${IMAGE_TAG}" >> .env
+
 if [[ $2 == "multiple-hosts" ]]; then
     config=docker-compose-multiple-hosts.yml
 elif [[ $2 == "loadbalancer-hosts" ]]; then
@@ -25,7 +28,6 @@ docker-compose -f $config -p ansible_katas up -d
 for host in $(docker ps -a --filter name=ansible_katas_host  --format "{{.Names}}")
 do
     docker exec ansible_katas_workspace cat ../root/.ssh/id_rsa.pub > id_rsa.pub
-    docker exec $host mkdir root/.ssh
     docker cp id_rsa.pub $host:root/.ssh/authorized_keys
     docker exec $host chown root:root root/.ssh/authorized_keys
     echo $host ip:$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $host)

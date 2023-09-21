@@ -1,9 +1,7 @@
 version: '3'
 services:
   workspace:
-    build:
-      context: .
-      dockerfile: ansible_katas_workspace
+    image: ghcr.io/verifa/ansible-katas:${IMAGE_TAG}
     container_name: ansible_katas_workspace
     privileged: true
     working_dir: /workspace
@@ -11,17 +9,13 @@ services:
       - ${EXERCISE_PATH}/workspace:/workspace
       - "/var/run/docker.sock:/var/run/docker.sock"
   host-1:
-    build:
-      context: .
-      dockerfile: ansible_katas_host
+    image: ghcr.io/verifa/ansible-katas:${IMAGE_TAG}
     container_name: ansible_katas_host_1
     environment:
       - NAME=ansible_katas_host_1
       - GROUP=hosts
   host-2:
-    build:
-      context: .
-      dockerfile: ansible_katas_host
+    image: ghcr.io/verifa/ansible-katas:${IMAGE_TAG}
     container_name: ansible_katas_host_2
     environment:
       - NAME=ansible_katas_host_2
