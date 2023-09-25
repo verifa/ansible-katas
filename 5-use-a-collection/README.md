@@ -2,14 +2,14 @@
 
 This exercise will introduce you to collections and how to use them.
 
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+
 ## What are Collections?
 Collections are a distribution format for Ansible content that can include playbooks, roles, modules, and plugins. You can install and use collections through a distribution server, such as [galaxy.ansible.com](https://galaxy.ansible.com).
 
 In our last exercise we created a role for installing nginx. However it is safe to assume we probably reinvented the wheel on this one. We can go to [galaxy.ansible.com](https://galaxy.ansible.com) to see what collections and roles people have uploaded before. There we find Nginx [official collection](https://galaxy.ansible.com/nginxinc/nginx_core) that contains handy roles for installing and working with Nginx.
 
 ## Exercise
-
-*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
 
 1. Install the Nginx official collection by running the command below:
 

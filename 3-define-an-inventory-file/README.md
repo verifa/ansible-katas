@@ -2,6 +2,8 @@
 
 This exercise will introduce you to hosts and the inventory file.
 
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+
 ## Introduction
 
 We have until now glossed over the `hosts: all` parameter seen in our plays. Simply put, a host is ansibles name for the target machine we want the tasks to execute on, ie; the machine we want to change. As you can imagine, in the real world we might have access to a massive amount of different hosts, and we might have playbooks that we want to be able to run on several of these hosts at once. We do this by organising all our different hosts into one file, called an `inventory`, and then we specify in the playbook which hosts from the inventory file we want the play to run on. Can you guess now what `hosts: all` means?
@@ -21,8 +23,6 @@ INSERT_IP_2_HERE
 ```
 
 ## Exercise
-
-*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
 
 1. Open the `hosts` file. Insert each of the two generated ips from your terminal during setup into separate groups by replacing the `INSERT_IP_X_HERE` example text.
 

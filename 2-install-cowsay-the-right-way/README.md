@@ -2,6 +2,8 @@
 
 This exercise will introduce you to Ansible builtin modules and how to use them.
 
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+
 ## Introduction to Modules
 In our previous exercise we utilized the `debug` module to see if our install was successful, as the `shell` module does not have this functionality. We also missed an important step in not checking if cowsay was already installed before executing.
 

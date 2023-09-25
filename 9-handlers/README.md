@@ -2,6 +2,8 @@
 
 This exercise will introduce you to handlers.
 
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+
 ## Introduction
 
 So far we have built our playbooks with tasks, and they always run sequentially in a playbook from top to bottom. Handlers are also just normal tasks, with the key difference that they do not run by default. They can be notified by other tasks and doing so will trigger them to run after the normal tasks are done. In other words, handlers are conditionally triggered tasks.

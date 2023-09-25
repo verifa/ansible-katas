@@ -2,6 +2,8 @@
 
 This exercise will introduce you to using dynamic inventories instead of static files to track hosts.
 
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+
 ## What's a Dynamic Inventory?
 
 Maintaining an inventory file might be ok when starting out, experimenting and learning. But commonly you will quickly grow in scale and need some dynamic way to track hosts when new servers/VMs are created in your environment. Luckily Ansible has a large number of dynamic [inventory plugins](https://docs.ansible.com/ansible/latest/collections/index_inventory.html). For this exercise we will use the [Dynamic Inventory Plugin for Docker containers](https://docs.ansible.com/ansible/latest/collections/community/docker/docker_containers_inventory.html#ansible-collections-community-docker-docker-containers-inventory), this plugin will query the local Docker socket and gather information about all the containers running in the system.
