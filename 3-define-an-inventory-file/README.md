@@ -30,7 +30,7 @@ INSERT_IP_2_HERE
 
 3. Run the playbook with the command below. This time there will be no need to edit the command with an ip adress, as we will be using an inventory file.
 
-```
+``` bash
 ansible-playbook -i hosts playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
 

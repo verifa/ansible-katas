@@ -13,7 +13,8 @@ When we use playbooks for real business applications, it is likely that we might
 Let's start by creating our ansible-vault file.
 
 1. Run the following command:
-```
+
+```bash
 ansible-vault create my-first-vault.yml
 ```
 
@@ -22,6 +23,7 @@ You will be prompted to add a password. This is the password that will protect t
 *You will be presented with a Nano window. If youre unfamiliar with this text editor, you can get some help from the [documentation here](https://www.nano-editor.org/dist/v2.2/nano.html). TLDR: control+x to save, answer yes to the prompt and press enter to close.*
 
 2. Copy the content below into the nano window. Replace `name` and `value` with something of your choosing, just make sure you remember them for later.
+
 ```yaml
 ---
 name: "value"
@@ -30,7 +32,8 @@ name: "value"
 After saving and closing the Nano window, we can take a look at how the file actually looks on our computer now.
 
 3. Run the following command:
-```
+
+```bash
 cat my-first-vault.yml
 ````
 
@@ -51,6 +54,7 @@ It's our old trusty cowsay playbook, but with some small modifications.
   vars_files: # new
     - my-first-vault.yml # new
 ```
+
 We have added `vars_files` and as a list entry we added our `my-first-vault.yml`. A little further down we can see that our cow is trying to say something. You can reference values from an ansible-vault file using double brackets like {{ this }}.
 
 ```yaml
@@ -67,7 +71,7 @@ The time has come to see if Ansible can successfully read the encrypted value in
 
 6. Run the playbook: *Remember to replace the HOST_IP like before.*
 
-```
+```bash
 ansible-playbook -i HOST_IP, playbook.yml --private-key ~/.ssh/id_rsa --ask-vault-pass -u root
 ```
 

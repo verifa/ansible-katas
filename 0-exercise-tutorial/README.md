@@ -5,10 +5,14 @@ We have created an isolated training environment for these Ansible exercises, th
 ## how to start
 
 1. navigate to the folder of the exercise you want to run.
-2. run the setup.sh script inside of the exercise folder (this might take a few minutes your first time, but will only take a few seconds for the rest of the exercises.)
->./setup.sh
-3. You will now be inside the training environment workspace, ready to go!
 
+2. run the setup.sh script inside of the exercise folder by copying the command below(this might take a few minutes your first time, but will only take a few seconds for the rest of the exercises.)
+
+```bash
+./setup.sh
+````
+
+You will now be inside the training environment workspace, ready to go!
 
 In each exercise folder you will find a README.md, a setup.sh script, and a workspace folder.
 

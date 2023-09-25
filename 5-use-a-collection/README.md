@@ -5,6 +5,7 @@ This exercise will introduce you to collections and how to use them.
 *Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
 
 ## What are Collections?
+
 Collections are a distribution format for Ansible content that can include playbooks, roles, modules, and plugins. You can install and use collections through a distribution server, such as [galaxy.ansible.com](https://galaxy.ansible.com).
 
 In our last exercise we created a role for installing nginx. However it is safe to assume we probably reinvented the wheel on this one. We can go to [galaxy.ansible.com](https://galaxy.ansible.com) to see what collections and roles people have uploaded before. There we find Nginx [official collection](https://galaxy.ansible.com/nginxinc/nginx_core) that contains handy roles for installing and working with Nginx.
@@ -13,12 +14,13 @@ In our last exercise we created a role for installing nginx. However it is safe 
 
 1. Install the Nginx official collection by running the command below:
 
-```
+```bash
 ansible-galaxy collection install nginxinc.nginx_core
 ```
 
 2. We can now list our installed collections to see what we have available. Run the following command:
-```
+
+```bash
 ansible-galaxy collection list
 ```
 
@@ -55,15 +57,15 @@ We have imported our previously downloaded collection into the playbook with the
   collections:
     - nginxinc.nginx_core
 ```
+
 and then imported a role from that collection under the `tasks` section.
 
 5. Run the playbook with the command below:
 
-```
+```bash
 ansible-playbook -i HOST_IP, playbook.yml --private-key ~/.ssh/id_rsa -u root
 ```
 *Remember to replace IP adress like before!*
-
 
 *if you receive an error that "service is in an unkown state", try running the playbook again. It is likely that the role is trying to start the service before it has fully installed yet and thus encounters the error.*
 

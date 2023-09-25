@@ -16,15 +16,16 @@ The mother of all quick and easy tests is the linter. A linter checks your docum
 
 1. install yamllint with the following command:
 
-```
+```bash
 apt-get install yamllint
 ```
 
 2. run yamllint on our playbook with the following command:
 
-```
+```bash
 yamllint playbook.yml
 ```
+
 You should be met with a selection of errors and warnings similar to below.
 
 *insert image here of yamllint output*
@@ -38,14 +39,16 @@ If you include yamllint in your automation pipelines, its worth noting that erro
 Now that we have tried out yamllint and have made sure that our playbook at least is valid and properly styled YAML, we should move on to validate that it is solid ansible as well.
 
 4. Install ansible-lint with the following command:
-```
+
+```bash
 pip3 install ansible-lint
 ```
 
 *We can alter ansible-lints rules and preferences with a config file, but for this exercise we will continue with the defaults.*
 
 5. Let's run the below command to lint all playbooks in your working directory:
-```
+
+```bash
 ansible-lint
 ```
 

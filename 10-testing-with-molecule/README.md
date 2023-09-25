@@ -2,6 +2,8 @@
 
 This exercise will introduce you to Molecule.
 
+*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+
 ## Introduction
 
 In our previous test exercise we ran some basic linting. However some more extensive testing is needed if we want to work safely in a production environment.

@@ -21,7 +21,7 @@ on a host[^1].
 
 2. Let's run the playbook. Copy paste the following command into your terminal after replacing HOST_IP with the ip that was generated when you ran the `setup.sh`.
 
-```
+``` bash
 ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
 

@@ -5,6 +5,7 @@ This exercise will introduce you to Ansible builtin modules and how to use them.
 *Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
 
 ## Introduction to Modules
+
 In our previous exercise we utilized the `debug` module to see if our install was successful, as the `shell` module does not have this functionality. We also missed an important step in not checking if cowsay was already installed before executing.
 
 When working in the real world it is important to make sure our playbooks avoid performing tasks that would be harmful or unnessecary to the host, such as running an install on a host where the software already exists. We must also make sure that we are getting all the neccesary information about a task execution so that we can properly test our playbooks, as well as know that they ran successfully in production. Information such as; did the software install correctly?
@@ -17,10 +18,9 @@ Let's use a builtin module to perform the same tasks as the previous exercise. W
 
 We can see that we are now using `ansible.builtin.package` instead of the `shell` module. This is ansibles generic package manager module for installing and updating packages. There are builtin modules for specific package managers like apt, but using the generic module where possible keeps our playbooks a little more flexible to different operating systems, as ansibles generic modules will try to use the correct module for your hosts operating system.
 
-
 2. Run the playbook: *Remember to replace the HOST_IP like before.*
 
-```
+``` bash
 ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
 

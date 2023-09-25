@@ -28,7 +28,7 @@ We can play around with the `ansible-inventory` CLI to understand what kind of i
 
 ```bash
 ansible-inventory -i local-docker.yml --graph
-# OR 
+# OR
 ansible-inventory -i local-docker.yml --list
 ```
 
