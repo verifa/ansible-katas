@@ -28,7 +28,7 @@ yamllint playbook.yml
 
 You should be met with a selection of errors and warnings similar to below.
 
-*insert image here of yamllint output*
+![yamllint output](/.utils/assets/test-your-ansible_yamllint_output.png)
 
 If you include yamllint in your automation pipelines, its worth noting that errors will cause an error code but warnings do not. Yamllint's rules and warning levels are fully customisable in a config file, but for this exercise we will simply use the defaults.
 
@@ -52,6 +52,8 @@ pip3 install ansible-lint
 ansible-lint
 ```
 
-*insert image of ansible-lint errors here*
+![ansible-lint output](/.utils/assets/test-your-ansible_ansiblelint_output.png)
+
+Your output should look similar to the image above.
 
 6. As before, try to fix any errors the linter provides you.

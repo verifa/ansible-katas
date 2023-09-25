@@ -18,7 +18,7 @@ Let's start by creating our ansible-vault file.
 ansible-vault create my-first-vault.yml
 ```
 
-You will be prompted to add a password. This is the password that will protect the contents of your file, so in a proffessional setting, this password should either be written to a protected file on your ansible machine, or prefferably stored in some shared secret manager like Hashicorp Vault. We will need to remember our password for later.
+You will be prompted to add a password. This is the password that will protect the contents of your file, so in a professional setting, this password should either be written to a protected file on your ansible machine, or preferably stored in some shared secret manager like Hashicorp Vault. We will need to remember our password for later.
 
 *You will be presented with a Nano window. If youre unfamiliar with this text editor, you can get some help from the [documentation here](https://www.nano-editor.org/dist/v2.2/nano.html). TLDR: control+x to save, answer yes to the prompt and press enter to close.*
 
@@ -39,7 +39,7 @@ cat my-first-vault.yml
 
 We can see that our file is encrypted! The only way to see our value now is to decrypt it with our previously set password.
 
-*insert example picture of output here*
+![encrypted file output](/.utils/assets/handling-your-secrets_encrypted_file.png)
 
 Let's now try to use our earlier created secret in an actual playbook.
 
@@ -77,7 +77,4 @@ ansible-playbook -i HOST_IP, playbook.yml --private-key ~/.ssh/id_rsa --ask-vaul
 
 Notice the new `--ask-vault-pass` flag added. This makes Ansible prompt us for a password to our specified ansible-vault files on playbook execution. For alternative ways to use vault, see [documentation](https://docs.ansible.com/ansible/2.8/user_guide/vault.html).
 
-If everything was done correctly, we should see some output like below, where our cow is yelling out our secret value. Great!
-
-*insert example image here*
-
+If everything was done correctly, we should see some output where our cow is yelling out our secret value. Great!

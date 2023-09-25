@@ -25,7 +25,7 @@ on a host[^1].
 ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
 ```
 
-![playbook run helper image](/utils/assets/my-first-playbook_img_1.png)
+![playbook run helper image](/.utils/assets/my-first-playbook_img_1.png)
 
 3. Answer "yes" to the SSH prompt asking if you want to continue connecting.
 
@@ -33,7 +33,7 @@ ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
 
 If everything ran correctly, we should see some output like the example image below:
 
-![playbook run output image](/utils/assets/my-first-playbook_img_2.png)
+![playbook run output image](/.utils/assets/my-first-playbook_img_2.png)
 
 Let's open up the `playbook.yaml` again and take a look at some of the details to understand what happened.
 
