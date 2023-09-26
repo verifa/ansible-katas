@@ -1,31 +1,50 @@
-# Welcome to ansible katas
+# Ansible Training
 
-<em>Most documentation in this repository can be considered placeholder as we are still finalising what the exercises and the kata repository in general will look like. </em>
+In this repository you will find free hands-on exercises that you can download and repeat as many times as you like. Their intended purpose is to teach you the basics of Ansible, as well as how to work with best practices once you've mastered the basics.
 
-Feedback in the form of issues would be great :^).
+*There is an assosciated workshop available for this material. Reach out to Verifa at [verifa.io](https://verifa.io/contact/) for more information!*
 
-In this repository you will find repeatable exercise katas that you can download and repeat as many times as you like. Their intended purpose is to teach you the basics of Ansible, as well as how to work with best practices once you've mastered the basics.
+---
+## Dependencies
 
-We have created an isolated training environment for these exercises, thus making it only required to have docker installed to run. The isolated environment will serve as a guardrail in case you manage to run some Ansible that will detrimentally change some state on the target machine. In such a case you can simply run the script that creates the environment again, and it will remove the old one and create a fresh new one. The environment will also provide some simulated machines to run your exercises against.
+To run these exercises you will need to have [Docker](https://www.docker.com/) installed.
 
-## how to start
+## Getting started
 
-1. navigate to the folder of the exercise you want to run.
-2. run the setup.sh script inside of the exercise folder (this might take a few minutes your first time, but will only take a few seconds for the rest of the exercises.)
->./setup.sh
-3. You will now be inside the training environment workspace, ready to go!
+1. Clone the repository
 
+2. Navigate to the folder of the exercise you want to run.
+
+3. Run the setup.sh script inside of the exercise folder with the command:
+
+```bash
+./setup.sh
+```
+
+*this might initially take a few minutes, but will only take a few seconds for subsequent runs.*
+
+You will now be inside the training environment workspace, ready to go!
+
+## Usage
 
 In each exercise folder you will find a README.md, a setup.sh script, and a workspace folder.
 
 ### README.md
 
-the readme will contain your exercise, including exercise steps, explanations, and examples.
+the README will contain your exercise, covering exercise steps, explanations, and examples.
 
 ### Setup.sh
 
-The setup.sh should be run before every exercise, as mentioned in the step-by-step above. It will clean up any previous exercise environment, and spin up the relevant one for the exercise folder you are currently in. When complete, it will put you inside of your exercise workspace in the training environment, and you can start your exercise.
+The setup.sh should be run before every exercise. It will clean up any previous exercise environment, and spin up the relevant one for the exercise folder you are currently in. When complete, it will put you inside of your exercise workspace in the training environment, and you can start your exercise.
 
 ### workspace folder
 
-the workspace folder acts as a link between your training environment and your local computer. Anything you create inside the workspace folder on the training environment will also exist on the folder on your computer, and vice versa. This means that while working, you can open the workspace folder in whatever editor you prefer on your local computer, and perform any needed file changes there, and it will appear inside the training environment as well.
+the workspace folder acts as a link between your training environment and your local computer. Anything you create inside the workspace folder on the training environment will also exist on the folder on your computer, and vice versa. This means that while working, you can open the workspace folder in whatever editor you prefer on your local computer, and perform any needed file changes there, and it will appear inside the training environment.
+
+---
+
+## Contact
+
+This project is open source and any feedback is welcomed in the form of issues.
+
+For any questions regarding a full training workshop on Ansible for your company or team, contact Verifa at [verifa.io](https://verifa.io/contact/)
