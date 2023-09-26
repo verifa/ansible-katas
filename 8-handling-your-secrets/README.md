@@ -55,11 +55,13 @@ It's our old trusty cowsay playbook, but with some small modifications.
   become: yes
   vars_files: # new
     - my-first-vault.yml # new
+# ...
 ```
 
 We have added `vars_files` and as a list entry we added our `my-first-vault.yml`. A little further down we can see that our cow is trying to say something. You can reference values from an ansible-vault file using double brackets like {{ this }}.
 
 ```yaml
+# ...
     - name: Say something
       shell: |
         /usr/games/cowsay {{ INSERT_SECRET_NAME_HERE }}

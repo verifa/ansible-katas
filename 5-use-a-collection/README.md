@@ -56,8 +56,10 @@ Lets install Nginx on our host by importing the nginx installer role from the co
 We have imported our previously downloaded collection into the playbook with the lines below:
 
 ```yaml
+# ...
   collections:
     - nginxinc.nginx_core
+# ...
 ```
 
 and then imported a role from that collection under the `tasks` section.
