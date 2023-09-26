@@ -6,4 +6,4 @@
   - name: Print the host's name in inventory
     ansible.builtin.debug:
       var: inventory_hostname
-      
+

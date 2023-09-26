@@ -59,7 +59,7 @@ ansible-inventory -i local-docker.yml --graph
 In reality there might be many matches here, but we know we're interested in the `GROUP` environment variable and it's value. So next we can use that group in a playbook, just like in the example playbook:
 
 ```bash
-cat playbook.yaml
+cat playbook.yml
 ```
 
 ### Executing Playbooks with Dynamic Inventory
@@ -67,7 +67,7 @@ cat playbook.yaml
 You might be wondering how to put this all together by now, so let's finally execute this playbook by utilising the dynamic inventory:
 
 ```bash
-ansible-playbook --inventory local.docker.yaml playbook.yaml
+ansible-playbook --inventory local.docker.yml playbook.yml
 ```
 
 As you see, the inventory plugin's configuration is simply passed as the inventory "file" and the plugin is invoked before the playbook runs. This makes sure the inventory is always up-to-date when we execute the playbook.

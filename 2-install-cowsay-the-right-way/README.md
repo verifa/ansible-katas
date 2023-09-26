@@ -21,7 +21,7 @@ We can see that we are now using `ansible.builtin.package` instead of the `shell
 2. Run the playbook: *Remember to replace the HOST_IP like before.*
 
 ``` bash
-ansible-playbook -i HOST_IP, playbook.yaml --private-key ~/.ssh/id_rsa -u root
+ansible-playbook -i HOST_IP, playbook.yml --private-key ~/.ssh/id_rsa -u root
 ```
 
 Note that the reported status from ansible during our install step was "changed". This is ansibles way to indicate that it changed something on the host machine (in this case it installed cowsay) and that there were no errors. If a builtin module were to encounter a problem it would not return "changed", but rather an error message.

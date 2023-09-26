@@ -26,17 +26,17 @@ INSERT_IP_2_HERE
 
 1. Open the `hosts` file. Insert each of the two generated ips from your terminal during setup into separate groups by replacing the `INSERT_IP_X_HERE` example text.
 
-2. Open the `playbook.yaml` file. Specify the play to run on one of the groups by changing `hosts: all` to `hosts: group_1`.
+2. Open the `playbook.yml` file. Specify the play to run on one of the groups by changing `hosts: all` to `hosts: group_1`.
 
 3. Run the playbook with the command below. This time there will be no need to edit the command with an ip adress, as we will be using an inventory file.
 
 ``` bash
-ansible-playbook -i hosts playbook.yaml --private-key ~/.ssh/id_rsa -u root
+ansible-playbook -i hosts playbook.yml --private-key ~/.ssh/id_rsa -u root
 ```
 
 *note the difference in the command from previous runs as we are now pointing to a hosts file rather than a specific ip.*
 
-4. Open the `playbook.yaml` file once more. Specify the play to run on the `hosts: all` tag again. Run the playbook to see the difference.
+4. Open the `playbook.yml` file once more. Specify the play to run on the `hosts: all` tag again. Run the playbook to see the difference.
 
 In order to see check what group we ran on, just for fun, we can set a variable thats specific for each group. Lets give them a "name" variable that is set to their group name, and then have the cow say it during the playbook run to see which group of hosts were targeted.
 
@@ -57,7 +57,7 @@ NAME=group_1
 NAME=group_2
 ```
 
-6. add the following to your playbook.yaml:
+6. add the following to your playbook.yml:
 
 ```yaml
 ---
