@@ -11,15 +11,15 @@ In order to perform any action with Ansible we need to write a *playbook*. An An
 ## The playbook
 
 We will use an example playbook to help us understand the basics. In this case, our playbook will install [cowsay](https://pypi.org/project/cowsay/)
-on a host[^1].
+on a host.
 
-[^1]: A host is Ansibles name for the machine(s) we will be configuring.
+*A host is Ansibles name for the machine(s) we will be configuring.*
 
 ---
 
 ## Exercise 1
 
-1. Take a look at the `playbook.yml` in the workspace directory.
+1. Take an initial look at the `playbook.yml` in the workspace directory, we won't understand much for now.
 
 2. Let's run the playbook. Copy paste the following command into your terminal after replacing HOST_IP with the ip that was generated when you ran the `setup.sh`.
 
@@ -37,11 +37,13 @@ If everything ran correctly, we should see some output like the example image be
 
 ![playbook run output image](/.utils/assets/my-first-playbook_img_2.png)
 
-Let's open up the `playbook.yml` again and take a look at some of the details to understand what happened.
+Let's revisit the `playbook.yml` and take a look at some of the details to understand what happened.
 
-For now we only have one *play*, named "install cowsay". The play has the parameters `hosts: all` and  `become: yes` which can be ignored for now.
+A playbook can have many *plays*, but for now we only have one, named "install cowsay".
 
-However, what is important for now is the `tasks` list. Right now we have one task in the task list, called "Execute the script". This task is a `shell` task, meaning we can use it to write shell commands that ansible will execute. Our task runs an apt-get update, and then installs cowsay.
+The play has the parameters `hosts: all` and  `become: yes` which we will ignore for now.
+
+However, what is important for now is the `tasks` list. The task list is the actual stuff that Ansible will try to do to your target host. Right now we have one task in the task list, called "Execute the script". This task is a `shell` task, meaning we can use it to write shell commands. In this case it runs an apt-get update, and then installs cowsay.
 
 ## Exercise 2: Make a change
 
