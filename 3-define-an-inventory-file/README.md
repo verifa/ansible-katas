@@ -10,7 +10,7 @@ We have until now glossed over the `hosts: all` parameter seen in our plays. Sim
 
 ## Inventory file
 
-The inventory file is a TOML-file where we can insert our hosts ip-address along with a desired tag or grouping for that host so that we can easily reference it from the playbook. For all possible inventory options see [here](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html).
+The inventory file is where we can insert our hosts ip-address along with a desired tag or grouping for that host so that we can easily reference it from the playbook. For all possible inventory options see [here](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html).
 
 Below is an example inventory file where we have created two groups; `group_1` and `group_2`. This file also exists inside our exercise workspace as `hosts`, which is a common naming convention for your inventory file.
 
