@@ -37,6 +37,8 @@ For example you should be cautious what you set in role vars, since it's rather 
 
 The [Good Practices for Ansible](https://redhat-cop.github.io/automation-good-practices/#_restrict_your_usage_of_variable_types) recommendation on restricting variable usage is solid, but sometimes the way you automate things might not allow generic "best practices", in that case define your own and stick to it!
 
+---
+
 ## Exercise
 
 This exercise scenario includes 3 hosts, one of them is configured as a loadbalancer and the two remaining hosts are "backends" to which the loadbalancer, well, load balances the traffic to. See the diagram below for visualisation:

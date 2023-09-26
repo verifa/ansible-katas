@@ -10,6 +10,8 @@ Collections are a distribution format for Ansible content that can include playb
 
 In our last exercise we created a role for installing nginx. However it is safe to assume we probably reinvented the wheel on this one. We can go to [galaxy.ansible.com](https://galaxy.ansible.com) to see what collections and roles people have uploaded before. There we find Nginx [official collection](https://galaxy.ansible.com/nginxinc/nginx_core) that contains handy roles for installing and working with Nginx.
 
+---
+
 ## Exercise
 
 1. Install the Nginx official collection by running the command below:

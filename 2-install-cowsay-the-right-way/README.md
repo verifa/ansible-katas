@@ -10,6 +10,8 @@ In our previous exercise we utilized the `debug` module to see if our install wa
 
 When working in the real world it is important to make sure our playbooks avoid performing tasks that would be harmful or unnessecary to the host, such as running an install on a host where the software already exists. We must also make sure that we are getting all the neccesary information about a task execution so that we can properly test our playbooks, as well as know that they ran successfully in production. Information such as; did the software install correctly?
 
+---
+
 ## Exercise
 
 Let's use a builtin module to perform the same tasks as the previous exercise. We will then examine its features for making sure cowsay is not already installed, and checking that the installation was successful.

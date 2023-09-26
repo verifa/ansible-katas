@@ -10,6 +10,8 @@ Maintaining an inventory file might be ok when starting out, experimenting and l
 
 You can also build your own custom plugins, only requirement is that you actually have a data source (typically an API of some sort) that you can use to make calls to and gather a list of hosts.
 
+---
+
 ## Exercise
 
 > **NOTE:** This excercise connects directly to the Docker socket which is disabled by default in recent Docker Desktop versions. You can alter this setting in the advanced settings in the GUI. It's recommended to turn it off after the exercise for security reasons (any process/user with access to the socket has effectively `root` access on the machine)

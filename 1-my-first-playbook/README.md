@@ -15,6 +15,8 @@ on a host[^1].
 
 [^1]: A host is Ansibles name for the machine(s) we will be configuring.
 
+---
+
 ## Exercise 1
 
 1. Take a look at the `playbook.yml` in the workspace directory.

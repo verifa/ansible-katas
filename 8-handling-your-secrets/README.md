@@ -8,6 +8,8 @@ This exercise will introduce you to ansible-vault and how to use it for secret m
 
 When we use playbooks for real business applications, it is likely that we might need to utilise some very sensitive data during our runs. With ansible-vault we can create files that hold all the neccesary secrets for our playbooks in an encrypted form. Ansible-vault can then utilize these encrypted values during a run, given that you provide the right password for the file that you gave on file creation. Since the file is encrypted, we can even store it alongside our playbooks in version control if we like. You should, if possible, store the ansible-vault file password inside something like hashicorp vault when working in a team.
 
+---
+
 ## Exercise
 
 Let's start by creating our ansible-vault file.

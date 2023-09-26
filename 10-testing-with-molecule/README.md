@@ -10,6 +10,8 @@ In our previous test exercise we ran some basic linting. However some more exten
 
 Molecule is a testing tool that allows you to configure default or customised target machines and tests. Then on test execution Molecule spins up target machines and run the tests you configured against the hosts, while also checking for things such as idempotence. This means you could customise your target machines to look like your production environment, and use molecule to test your playbooks locally or in a CI/CD pipeline without having to run it against production! Let's try it out.
 
+---
+
 ## Installing Molecule
 
 *TODO: I see the steps below are done in the dockerfile now. Ive intentionally let the exercises contain manual install steps when something isnt included in Ansible by default, so people arent confused when they set this stuff up outside the exercise environment, but perhaps it can just be highlighted with a message about "this is what you would need to run, but its already done" or something to keep the exercises a bit more streamlined and quickly repeatable?*

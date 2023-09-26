@@ -22,6 +22,8 @@ INSERT_IP_1_HERE
 INSERT_IP_2_HERE
 ```
 
+---
+
 ## Exercise
 
 1. Open the `hosts` file. Insert each of the two generated ips from your terminal during setup into separate groups by replacing the `INSERT_IP_X_HERE` example text.

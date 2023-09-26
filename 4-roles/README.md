@@ -64,6 +64,8 @@ Take a look at our playbook `playbook-pre-roles.yml`.
 
 This playbook installs a webserver called Nginx, and configures it with some custom configuration, then finally starts the server. The nitty details are not important to us, but as you can see, this playbook is starting to grow. It is also taking on the role of both installing nginx, and configuring it, and it is reasonable to assume that we might perhaps want to have a playbook that does one or the other of these things again in the future. Enter the stage...Roles!
 
+---
+
 ## Exercise
 
 Creating and implementing a role into your playbook is as simple as a command and some good old copy paste. However, the important thing to consider when creating one is making sure we document it well, so that it can be properly reused by ourselves and others down the line. That is for another exercise however.

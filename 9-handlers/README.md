@@ -8,6 +8,8 @@ This exercise will introduce you to handlers.
 
 So far we have built our playbooks with tasks, and they always run sequentially in a playbook from top to bottom. Handlers are also just normal tasks, with the key difference that they do not run by default. They can be notified by other tasks and doing so will trigger them to run after the normal tasks are done. In other words, handlers are conditionally triggered tasks.
 
+---
+
 ## exercise
 
 1. Take a look at our `playbook.yml`
