@@ -14,8 +14,8 @@
     path: /var/www/cowsay-site
     state: directory
     mode: '0775'
-    owner: root #"{{ ansible_user }}"
-    group: root #"{{ ansible_user }}"
+    owner: root  # "{{ ansible_user }}"
+    group: root  # "{{ ansible_user }}"
 
 - name: delete default nginx site
   file:

@@ -1,3 +1,4 @@
+---
 plugin: community.docker.docker_containers
 docker_host: unix://var/run/docker.sock
 keyed_groups:
