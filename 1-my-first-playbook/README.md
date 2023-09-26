@@ -19,7 +19,7 @@ on a host.
 
 ## Exercise 1
 
-1. Take an initial look at the `playbook.yml` in the workspace directory, we won't understand much for now.
+1. Take an initial look at the `playbook.yml` in the workspace directory. Don't worry about understanding much for now.
 
 2. Let's run the playbook. Copy paste the following command into your terminal after replacing HOST_IP with the ip that was generated when you ran the `setup.sh`.
 
