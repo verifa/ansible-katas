@@ -2,7 +2,7 @@
 
 This exercise will introduce you to basic YAML and Ansible lint testing with yamllint and ansible-lint.
 
-*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+*Initialise the exercise by running `./setup.sh` inside of the exercise directory. Wait until you are placed inside the workspace directory in the exercise environment. If you want to reset your environment at any time, you can simply run the setup script again.*
 
 ## Introduction
 

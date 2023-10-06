@@ -2,7 +2,7 @@
 
 This exercise will introduce you to Molecule.
 
-*Start by initialising the exercise by running ./setup.sh while inside of this exercise folder, and wait until you are put inside the workspace folder of the exercise environment. If you want to reset your environment at any time you can simply run the setup script again.*
+*Initialise the exercise by running `./setup.sh` inside of the exercise directory. Wait until you are placed inside the workspace directory in the exercise environment. If you want to reset your environment at any time, you can simply run the setup script again.*
 
 ## Introduction
 
@@ -38,7 +38,7 @@ We can initialize our Molecule structure with the following command.
 python3 -m molecule init scenario
 ```
 
-We should now see a new folder called `molecule` with a single scenario underneath, called `default`:
+We should now see a new directory called `molecule` with a single scenario underneath, called `default`:
 
 ```bash
 molecule
@@ -57,7 +57,7 @@ Molecule offers you the ability to fully customise your test targets, however fo
 rm molecule/default/create.yml molecule/default/destroy.yml
 ```
 
-You should also find a roles folder that is included in this exercise. This is the role we will be testing. If we look into `converge.yml` we can see that we specify molecule to run our nginx role.
+You should also find a roles directory that is included in this exercise. This is the role we will be testing. If we look into `converge.yml` we can see that we specify molecule to run our nginx role.
 
 ## Using molecule
 
