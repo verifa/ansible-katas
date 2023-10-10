@@ -40,7 +40,7 @@ You will notice that there are few groups, but none really work for us currently
 
 One of the challenges with Docker itself is that it does not have a concept like tags which is common way to group and query hosts/nodes in cloud providers such as AWS or Azure. So for the purpose of this exercise we will use a special environment variable `GROUP` which is injected into the `ansible_katas_host_x` containers by `docker-compose` during bootup.
 
-3. Modify the `local.docker.yml` to lookup the environment variables for all the containers it finds and then create groups named based on the environment variables:
+3. Modify the `local.docker.yml` to look up the environment variables for all the containers it finds and create group names based on the environment variables:
 
 ```diff
  plugin: community.docker.docker_containers
