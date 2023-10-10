@@ -6,7 +6,7 @@ In this Kata we will get to know common ways of injecting variables into your An
 
 Ansible has many ways for the operator to inject variables into playbooks and plays. There are so many ways that it can cause issues if you don't agree on common conventions and style with your team.
 
-To highlight how complicated things can get; take a quick look at this list of variable precedence. It shows the order of least authoriative variable injection to the greatest (meaning that the last listed variables would override all other variables):
+To highlight how complicated things can get; take a quick look at this list of variable precedence. It shows the order of least authoritative variable injection to the greatest (meaning that the last listed variables would override all other variables):
 
 1. command line values (for example, -u my_user, these are not variables)
 2. role defaults (defined in role/defaults/main.yml)
@@ -33,7 +33,7 @@ To highlight how complicated things can get; take a quick look at this list of v
 
 *This list is borrowed from the Ansible documentation. Note that there are also some caveats with some of these variables, I suggest checking out the live documentation when deciding which variables to use: <https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#understanding-variable-precedence>*
 
-As an example; you should be mindful of what you set in areas such as role vars, since it's "high" on the precedence list, and you cannot override those values from outside the role easily.
+As an example; you should be mindful of what you set in areas like `role vars`, since it's "high" on the precedence list, and you cannot override those values from outside the role easily.
 
 The [Good Practices for Ansible](https://redhat-cop.github.io/automation-good-practices/#_restrict_your_usage_of_variable_types) recommendation on restricting variable usage is solid, but sometimes the way you automate things might not allow generic "best practices". In that case; define your own and stick to it!
 
@@ -49,7 +49,7 @@ In this exercise we are interested in **variables**, thus we will not dive into 
 
 ### Variables Overview
 
-In this exercise we will define variables on four levels, here they are listed in precedence order from least to greatest:
+We will be defining variables on four levels, here they are listed in precedence order from least to greatest:
 
 1. role defaults
 2. group vars
