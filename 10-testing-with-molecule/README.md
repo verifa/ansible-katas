@@ -12,27 +12,9 @@ Molecule is a testing tool that allows you to configure default or customised ta
 
 ---
 
-## Installing Molecule
-
-*TODO: I see the steps below are done in the dockerfile now. Ive intentionally let the exercises contain manual install steps when something isnt included in Ansible by default, so people arent confused when they set this stuff up outside the exercise environment, but perhaps it can just be highlighted with a message about "this is what you would need to run, but its already done" or something to keep the exercises a bit more streamlined and quickly repeatable?*
-
-First of we need to install the Molecule CLI:
-
-```bash
-python3 -m pip install --user molecule
-```
-
-Then for the excerices we use the docker plugin, which is installed separately:
-
-```bash
-python3 -m pip install --user "molecule-plugins[docker]"
-```
-
 ## Getting started
 
 We can initialize our Molecule structure with the following command.
-
-*TODO: these files are already commited into the repo, how much work do we want to leave for the "student"?*
 
 ```bash
 python3 -m molecule init scenario
