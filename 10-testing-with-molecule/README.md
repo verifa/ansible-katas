@@ -63,10 +63,10 @@ molecule test
 
 There's quite a lot of output, but we should see that Molecule creates two instances.
 
-TODO: INSERT EXAMPLE IMAGE OF OUTPUT HERE
+![molecule instance creation output](/.utils/assets/molecule1.png)
 
 If everything goes smoothly, we should also see it perform two runs. The second run is to test idempotence, meaning that the tasks should all return an "OK" status on the second run.
 
-TODO: INSERT EXAMPLE IMAGE OF OUTPUT HERE
+![molecule idempotence output](/.utils/assets/molecule2.png)
 
  A "CHANGED" status would indicate that either our task does not have proper checks in place to confirm its own status, or that our task is written poorly, and is altering something on the machine even after it should already have been done on the first run.
