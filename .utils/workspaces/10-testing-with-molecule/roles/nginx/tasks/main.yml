@@ -2,7 +2,6 @@
 - name: "Update Cache"
   ansible.builtin.package:
     update_cache: true
-    cache_valid_time: 3600
 
 - name: "Install Nginx"
   ansible.builtin.package:
