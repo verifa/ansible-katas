@@ -8,7 +8,7 @@ In this repository you will find free hands-on exercises that you repeat as many
 
 ## Dependencies
 
-Running these exercises requires you to have [Docker](https://www.docker.com/) installed.
+Running these exercises requires you to have [Docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/install/) installed.
 
 ## Getting started
 
