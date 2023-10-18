@@ -14,13 +14,13 @@ Molecule is a testing tool that allows you to configure default or customised ta
 
 ## Getting started
 
-We can initialize our Molecule structure with the following command.
+We can initialize our Molecule structure with the following command, but for the purpose of this exercise it has already been done for us.
 
 ```bash
 python3 -m molecule init scenario
 ```
 
-We should now see a new directory called `molecule` with a single scenario underneath, called `default`:
+We should then see a new directory called `molecule` with a single scenario underneath, called `default`:
 
 ```bash
 molecule
