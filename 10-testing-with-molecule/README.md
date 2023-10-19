@@ -39,7 +39,7 @@ Molecule offers you the ability to fully customise your test targets, however fo
 rm molecule/default/create.yml molecule/default/destroy.yml
 ```
 
-You should also find a roles directory that is included in this exercise. This is the role we will be testing. If we look into `converge.yml` we can see that we specify molecule to run our nginx role.
+You should also find a `roles/` directory that is included in this exercise. This is the role we will be testing, and if we look into `converge.yml` we can see that we specify molecule to run our nginx role. Essentially, `converge.yml` acts like Molecules version of the main playbook.
 
 ## Using molecule
 
