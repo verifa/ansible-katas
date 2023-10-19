@@ -14,7 +14,7 @@ The inventory file is where we list our hosts' IP-address along with a desired t
 
 Below is an example inventory file, called `hosts`, where we have created two groups; `group_1` and `group_2`. `hosts` is a common naming convention for your inventory file.
 
-```toml
+```ini
 [group_1]
 INSERT_IP_1_HERE
 
@@ -42,7 +42,7 @@ In order to check the group we ran on, just for fun, we can set a variable that'
 
 5. Add the following to your hosts file:
 
-```toml
+```ini
 [group_1]
 INSERT_IP_1_HERE
 
