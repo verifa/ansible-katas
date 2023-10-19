@@ -31,3 +31,7 @@ Note that the reported status from Ansible during our install step was "changed"
 3. Try running the playbook again and check if the output is now "ok" instead of "changed".
 
 Ansible now properly evaluates if the program we want to install already exists on the host and acts accordingly. In this case, an "ok" indicates Ansible considers the desired end state of the task to be "ok" already, thus not requiring any execution.
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

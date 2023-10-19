@@ -59,3 +59,7 @@ ansible-lint
 Your output should look similar to the image above.
 
 6. As before, try to fix any errors the linter provides you.
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

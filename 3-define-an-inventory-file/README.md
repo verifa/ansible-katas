@@ -79,3 +79,7 @@ NAME=group_2
 ```
 
 7. Run the playbook again with different `hosts` values and see what output you get.
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

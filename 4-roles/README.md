@@ -165,3 +165,7 @@ ansible-playbook -i HOST_IP, playbook-post-roles.yml --private-key ~/.ssh/id_rsa
 Navigate to localhost:80 to see the result.
 
 *Normally we would access a host machine's ports for this result, not our Ansible machine's localhost, but due to convenience in the training environment, such is life.*
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

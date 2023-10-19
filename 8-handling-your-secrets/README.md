@@ -82,3 +82,7 @@ ansible-playbook -i HOST_IP, playbook.yml --private-key ~/.ssh/id_rsa --ask-vaul
 Notice the new `--ask-vault-pass` flag added. This makes Ansible prompt us for a password to our specified ansible-vault files on playbook execution. For alternative ways to use vault, see [documentation](https://docs.ansible.com/ansible/2.8/user_guide/vault.html).
 
 If everything was done correctly, we should see some output where our cow is yelling out our secret value. Great!
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

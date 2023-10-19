@@ -57,3 +57,7 @@ Let's add a new task which checks if the previous installation was successful by
       register: out
     - debug: var=out.stdout_lines
 ```
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

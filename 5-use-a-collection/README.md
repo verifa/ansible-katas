@@ -77,3 +77,7 @@ ansible-playbook -i HOST_IP, playbook.yml --private-key ~/.ssh/id_rsa -u root
 6. Navigate to localhost:80 to see if we encounter the default nginx page, indicating that nginx was installed and started successfully.
 
 For an extensive list of how you can utilize collections and uploaded roles, see the [official collection documentation](https://docs.ansible.com/ansible/latest/collections_guide/index.html).
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

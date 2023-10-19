@@ -177,3 +177,7 @@ ansible-playbook -i local.docker.yml --extra-vars "backend_bg_color=green" playb
 ```
 
 Now the background should be consistent between the backends! In general it's bad to provide the variable twice with different precedences, so we should probably decide between using `host_vars` or `extra vars` and remove the unnecessary variables.
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

@@ -100,3 +100,7 @@ ansible-inventory -i local.docker.yml --list
 ```
 
 In the case of the Docker plugin this information isn't super useful, but make sure to review these when using a plugin since they can be useful in playbooks.
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.

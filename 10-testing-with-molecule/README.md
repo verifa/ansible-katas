@@ -70,3 +70,7 @@ If everything goes smoothly, we should also see it perform two runs. The second 
 ![molecule idempotence output](/.utils/assets/molecule2.png)
 
  A "CHANGED" status would indicate that either our task does not have proper checks in place to confirm its own status, or that our task is written poorly, and is altering something on the machine even after it should already have been done on the first run.
+
+## Finishing up
+
+After you are finished with this exercise, leave the training environment by either pressing ctrl+d or simply typing `exit` in your terminal.
