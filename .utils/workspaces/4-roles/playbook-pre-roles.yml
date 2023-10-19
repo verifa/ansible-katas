@@ -46,4 +46,4 @@
       service:
         name: nginx
         state: started
-        use: service  # disclaimer on this shit
+        use: service

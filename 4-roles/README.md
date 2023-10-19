@@ -59,7 +59,7 @@ Take a look at our playbook `playbook-pre-roles.yml`.
     service:
       name: nginx
       state: started
-      use: service  # disclaimer on this shit
+      use: service
 ```
 
 This playbook installs a web server called *nginx*, and configures it with some custom configuration, then finally starts the server. The details are not important to us, but as you can see, this playbook is starting to grow. It's also taking on the role of both installing *and* configuring nginx. It is reasonable to assume we might want to have a playbook that does one or the other of these things again in the future. Enter the stage... Roles!
@@ -151,7 +151,7 @@ We can now look at the playbook `playbook-post-roles.yml`:
     service:
       name: nginx
       state: started
-      use: service  # disclaimer on this shit
+      use: service
 ```
 
 We have introduced a new section called `roles` that consists of our two roles, on the same level hierarchy as the tasks section.
