@@ -72,6 +72,8 @@ Creating and implementing a role is as simple as running a command and some good
 
 As discussed before, our playbook covers two responsibilities, or two roles; installing nginx, and configuring nginx. Lets split these into two roles.
 
+We will use Ansible Galaxy to create the boiler plate neccesary for the roles. Ansible Galaxy is a website and a command-line tool included in Ansible that allows Ansible users to create, share and manage roles.
+
 1. Initialise the roles by running the following commands:
 
 ```bash
