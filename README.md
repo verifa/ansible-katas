@@ -1,4 +1,4 @@
-# Ansible Training
+![Repo banner](/.utils/assets/ansible_katas_banner.png)
 
 In this repository you will find free hands-on exercises that you repeat as many times as you like. Their intended purpose is to teach you the basics of Ansible, as well as some best practices once you've mastered the fundamentals.
 
