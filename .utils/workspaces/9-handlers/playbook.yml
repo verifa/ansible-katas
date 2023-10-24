@@ -14,7 +14,7 @@
         msg: "{{ out.stdout_lines }}"
 
   tasks:
-    - name: Install cowsay
+    - name: Install cowsay.
       ansible.builtin.package:
         name: cowsay
         state: present

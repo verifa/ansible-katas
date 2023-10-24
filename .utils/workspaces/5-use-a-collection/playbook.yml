@@ -1,5 +1,5 @@
 ---
-- name: run nginx
+- name: Run nginx
   hosts: all
 
   collections:
@@ -10,7 +10,7 @@
     ansible.builtin.import_role:
       name: nginx
 
-  - name: "start nginx"
+  - name: Start nginx.
     service:
       name: nginx
       state: started

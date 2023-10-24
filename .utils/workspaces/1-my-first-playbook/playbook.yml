@@ -1,9 +1,9 @@
 ---
-- name: install cowsay
+- name: Install Cowsay
   hosts: all
   become: yes
   tasks:
-    - name: Execute the script
+    - name: Execute the script.
       shell: |
         apt-get update -y
         apt-get install -y cowsay

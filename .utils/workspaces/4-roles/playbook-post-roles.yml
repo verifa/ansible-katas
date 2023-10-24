@@ -1,5 +1,5 @@
 ---
-- name: run cowsay-nginx
+- name: Run cowsay-nginx
   hosts: all
 
   roles:
@@ -7,7 +7,7 @@
     - role: configure-cowsay-nginx
 
   tasks:
-  - name: "start nginx"
+  - name: Start nginx.
     service:
       name: nginx
       state: started

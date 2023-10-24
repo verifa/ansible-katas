@@ -1,20 +1,20 @@
 ---
-- name: "Update Cache"
+- name: Update Cache.
   ansible.builtin.package:
     update_cache: true
     cache_valid_time: 3600
 
-- name: "Install Nginx"
+- name: Install nginx.
   ansible.builtin.package:
     name: nginx
     state: present
 
-- name: delete default nginx site
+- name: Delete default nginx site.
   file:
     path: /etc/nginx/sites-enabled/default
     state: absent
 
-- name: template nginx.conf
+- name: Template nginx.conf.
   template:
     src: lb.conf.j2
     dest: /etc/nginx/conf.d/lb.conf
@@ -22,7 +22,7 @@
     group: root
     mode: '0644'
 
-- name: "start nginx"
+- name: Start nginx.
   service:
     name: nginx
     state: started

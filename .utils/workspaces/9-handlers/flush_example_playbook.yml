@@ -14,7 +14,7 @@
         msg: "{{ out.stdout_lines }}"
 
   tasks:
-    - name: Task 1
+    - name: Task 1.
       shell: |
         echo "example run"
       notify:
@@ -23,7 +23,7 @@
     - name: Flush handlers
       meta: flush_handlers
 
-    - name: Task 2
+    - name: Task 2.
       shell: |
         echo "example run two"
       notify:

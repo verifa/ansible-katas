@@ -1,9 +1,9 @@
 ---
-- name: install cowsay
+- name: Install Cowsay
   hosts: all
   become: yes
   tasks:
-    - name: Install cowsay
+    - name: Install cowsay.
       ansible.builtin.package:
         name: cowsay
         state: present

@@ -1,14 +1,14 @@
 ---
-- name: "Update Cache"
+- name: Update Cache.
   ansible.builtin.package:
     update_cache: true
 
-- name: "Install Nginx"
+- name: Install nginx.
   ansible.builtin.package:
     name: nginx
     state: present
 
-- name: "create www directory"
+- name: Create www directory.
   file:
     path: /var/www/cowsay-site
     state: directory

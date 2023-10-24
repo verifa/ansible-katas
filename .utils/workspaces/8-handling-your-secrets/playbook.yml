@@ -6,13 +6,13 @@
     - my-first-vault.yml  # new
 
   tasks:
-    - name: Install cowsay
+    - name: Install cowsay.
       ansible.builtin.package:
         name: cowsay
         state: present
         update_cache: yes
 
-    - name: Say something
+    - name: Say something.
       shell: |
         /usr/games/cowsay {{ INSERT_SECRET_NAME_HERE }}
       register: out
