@@ -1,7 +1,9 @@
 ---
 - name: Install Cowsay
   hosts: all
-  become: yes
+  become: true
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   tasks:
     - name: Install cowsay.
       ansible.builtin.package:

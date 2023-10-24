@@ -63,7 +63,9 @@ NAME=group_2
 ---
 - name: install cowsay
   hosts: all ##change hosts group here
-  become: yes
+  become: true
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
   tasks:
     - name: Install cowsay
       ansible.builtin.package:
